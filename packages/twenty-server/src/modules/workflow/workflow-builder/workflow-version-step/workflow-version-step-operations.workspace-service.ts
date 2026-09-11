@@ -149,6 +149,7 @@ export class WorkflowVersionStepOperationsWorkspaceService {
   private async findFirstActiveObjectMetadata(workspaceId: string) {
     return this.objectMetadataRepository.findOne(workspaceId, {
       where: { isActive: true, isSystem: false },
+      order: { nameSingular: 'ASC' },
     });
   }
 
