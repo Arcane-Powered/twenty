@@ -10,11 +10,15 @@ import { EmailThreadAiSummaryContent } from '@/activities/emails/ai/components/E
 import { useEmailThreadSummary } from '@/activities/emails/ai/hooks/useEmailThreadSummary';
 import { type EmailThreadMessageWithSender } from '@/activities/emails/types/EmailThreadMessageWithSender';
 import { ShimmeringText } from '@/ai/components/ShimmeringText';
+import { useAtomStateValue } from '@/ui/utilities/state/jotai/hooks/useAtomStateValue';
+import { dateLocaleState } from '~/localization/states/dateLocaleState';
+import { beautifyPastDateRelativeToNow } from '~/utils/date-utils';
 
 const StyledPanel = styled.div`
   background: ${themeCssVariables.background.secondary};
   box-sizing: border-box;
   display: flex;
+  flex: 1;
   flex-direction: column;
   min-height: 0;
 `;
@@ -82,6 +86,7 @@ export const EmailThreadAiPanel = ({
   shouldGenerateOnOpen,
   onClose,
 }: EmailThreadAiPanelProps) => {
+  const { localeCatalog } = useAtomStateValue(dateLocaleState);
   const { summary, errorMessage, loading, generateSummary } =
     useEmailThreadSummary({ messageThreadId, subject, messages });
 
@@ -152,7 +157,12 @@ export const EmailThreadAiPanel = ({
       </StyledBody>
       {hasSummary && (
         <StyledFooter>
-          <span>{t`Generated from the messages of this thread`}</span>
+          <span>
+            {t`Generated ${beautifyPastDateRelativeToNow(
+              summary.generatedAt,
+              localeCatalog,
+            )}`}
+          </span>
           <span>{summary.modelId}</span>
         </StyledFooter>
       )}

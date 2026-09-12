@@ -16,7 +16,7 @@ const buildParticipant = (
     workspaceMember: null,
     __typename: 'EmailThreadMessageParticipant',
     ...overrides,
-  }) as EmailThreadMessageWithSender['sender'];
+  }) as unknown as EmailThreadMessageWithSender['sender'];
 
 const buildMessage = (
   overrides: Partial<EmailThreadMessageWithSender> = {},
@@ -41,7 +41,7 @@ const buildMessage = (
     ],
     __typename: 'EmailThreadMessage',
     ...overrides,
-  }) as EmailThreadMessageWithSender;
+  }) as unknown as EmailThreadMessageWithSender;
 
 describe('buildEmailAssistantMessageInputs', () => {
   it('maps a message to the assistant input shape', () => {
