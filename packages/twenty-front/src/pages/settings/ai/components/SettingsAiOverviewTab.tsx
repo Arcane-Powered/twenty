@@ -14,7 +14,13 @@ import { Fragment, useState } from 'react';
 import { SettingsPath } from 'twenty-shared/types';
 import { getSettingsPath } from 'twenty-shared/utils';
 import { Section, useToast } from 'twenty-ui/components';
-import { IconBook, IconMessage, IconSparkles, IconTool } from 'twenty-ui/icon';
+import {
+  IconBook,
+  IconMail,
+  IconMessage,
+  IconSparkles,
+  IconTool,
+} from 'twenty-ui/icon';
 import { useTheme, themeCssVariables } from 'twenty-ui/theme';
 import { useDebouncedCallback } from 'use-debounce';
 import {
@@ -119,6 +125,19 @@ export const SettingsAiOverviewTab = () => {
           <SettingsCard
             Icon={<IconSparkles size={theme.icon.size.md} />}
             title={t`Set up MCP`}
+          />
+        </UndecoratedLink>
+      </Section.Root>
+
+      <Section.Root>
+        <Section.Header
+          title={t`Emails`}
+          description={t`Context and defaults used to summarize threads and write replies`}
+        />
+        <UndecoratedLink to={getSettingsPath(SettingsPath.AiEmail)}>
+          <SettingsCard
+            Icon={<IconMail size={theme.icon.size.md} />}
+            title={t`Email assistant`}
           />
         </UndecoratedLink>
       </Section.Root>

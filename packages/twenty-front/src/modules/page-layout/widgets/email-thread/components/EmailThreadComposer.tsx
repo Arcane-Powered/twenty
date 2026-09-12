@@ -6,6 +6,7 @@ import { useEmailComposerState } from '@/activities/emails/hooks/useEmailCompose
 import { useAttachEmailFiles } from '@/activities/emails/hooks/useAttachEmailFiles';
 import { type ReplyContextReady } from '@/activities/emails/hooks/useReplyContext';
 import { type EmailDraftPrefill } from '@/activities/emails/types/EmailDraftPrefill';
+import { type EmailThreadMessageWithSender } from '@/activities/emails/types/EmailThreadMessageWithSender';
 import { EmailThreadComposerFooterEffect } from '@/page-layout/widgets/email-thread/components/EmailThreadComposerFooterEffect';
 import { SIDE_PANEL_FOCUS_ID } from '@/side-panel/constants/SidePanelFocusId';
 import { useOpenRecordInSidePanel } from '@/side-panel/hooks/useOpenRecordInSidePanel';
@@ -45,6 +46,8 @@ type EmailThreadComposerProps = {
   isComposerOpen: boolean;
   setIsComposerOpen: (open: boolean) => void;
   draftPrefill?: EmailDraftPrefill | null;
+  messageThreadId?: string;
+  threadMessages?: EmailThreadMessageWithSender[];
 };
 
 export const EmailThreadComposer = ({
@@ -53,6 +56,8 @@ export const EmailThreadComposer = ({
   isComposerOpen,
   setIsComposerOpen,
   draftPrefill,
+  messageThreadId,
+  threadMessages,
 }: EmailThreadComposerProps) => {
   const { openRecordInSidePanel } = useOpenRecordInSidePanel();
 
@@ -158,6 +163,8 @@ export const EmailThreadComposer = ({
         <EmailComposerFields
           composerState={composerState}
           onAttachFiles={isInSidePanel ? undefined : openAttachmentPicker}
+          messageThreadId={messageThreadId}
+          threadMessages={threadMessages}
         />
       ) : (
         !isInSidePanel && (

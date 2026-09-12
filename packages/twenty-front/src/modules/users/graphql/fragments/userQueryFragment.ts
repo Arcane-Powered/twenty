@@ -106,6 +106,11 @@ export const USER_QUERY_FRAGMENT = gql`
       isAutoModelSelectionEnabled
       aiModelIdByTier
       aiAdditionalInstructions
+      aiEmailInstructions
+      aiEmailTone
+      aiEmailLanguage
+      aiEmailLength
+      isAiEmailAutoSummaryEnabled
       isTwoFactorAuthenticationEnforced
       trashRetentionDays
       eventLogRetentionDays

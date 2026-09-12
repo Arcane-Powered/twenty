@@ -1,4 +1,5 @@
 import { styled } from '@linaria/react';
+import { t } from '@lingui/core/macro';
 
 import { type EmailThreadMessageParticipant } from '@/activities/emails/types/EmailThreadMessageParticipant';
 import { getDisplayNameFromParticipant } from '@/activities/emails/utils/getDisplayNameFromParticipant';
@@ -13,9 +14,8 @@ const StyledThreadMessageReceivers = styled.span`
   color: ${themeCssVariables.font.color.tertiary};
   display: flex;
   font-size: ${themeCssVariables.font.size.xs};
-  padding: ${themeCssVariables.spacing[2]} ${themeCssVariables.spacing[0]}
-    ${themeCssVariables.spacing[0]} ${themeCssVariables.spacing[1]};
-  width: 50%;
+  min-width: 0;
+  width: 100%;
 `;
 
 export const EmailThreadMessageReceivers = ({
@@ -25,11 +25,9 @@ export const EmailThreadMessageReceivers = ({
     .map((receiver) => getDisplayNameFromParticipant({ participant: receiver }))
     .join(', ');
 
-  const body = `to: ${displayedReceivers}`;
-
   return (
     <StyledThreadMessageReceivers>
-      <OverflowingTextWithTooltip text={body} />
+      <OverflowingTextWithTooltip text={t`To ${displayedReceivers}`} />
     </StyledThreadMessageReceivers>
   );
 };

@@ -384,6 +384,12 @@ const SettingsAiPrompts = lazy(() =>
   })),
 );
 
+const SettingsAiEmail = lazy(() =>
+  import('~/pages/settings/ai/SettingsAiEmail').then((module) => ({
+    default: module.SettingsAiEmail,
+  })),
+);
+
 const SettingsWorkspaceMembers = lazy(() =>
   import('~/pages/settings/members/SettingsWorkspaceMembers').then(
     (module) => ({
@@ -850,6 +856,7 @@ const createSettingsRouteElements = ({
     >
       <Route path={SettingsPath.AI} element={<SettingsAI />} />
       <Route path={SettingsPath.AiPrompts} element={<SettingsAiPrompts />} />
+      <Route path={SettingsPath.AiEmail} element={<SettingsAiEmail />} />
       <Route
         path={SettingsPath.AiNewAgent}
         element={<SettingsAgentForm mode="create" />}

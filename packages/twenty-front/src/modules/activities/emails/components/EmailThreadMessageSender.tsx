@@ -5,6 +5,7 @@ import { ParticipantChip } from '@/activities/components/ParticipantChip';
 import { type EmailThreadMessageParticipant } from '@/activities/emails/types/EmailThreadMessageParticipant';
 import { TooltipDelay } from '@/ui/layout/tooltip/constants/TooltipDelay';
 import { useAtomStateValue } from '@/ui/utilities/state/jotai/hooks/useAtomStateValue';
+import { isNonEmptyString } from '@sniptt/guards';
 import { Tooltip } from 'twenty-ui/primitives/surfaces';
 import { themeCssVariables } from 'twenty-ui/theme';
 import { dateLocaleState } from '~/localization/states/dateLocaleState';
@@ -15,8 +16,26 @@ import {
 import { isDefined } from 'twenty-shared/utils';
 
 const StyledEmailThreadMessageSender = styled.div`
+  align-items: center;
   display: flex;
+  gap: ${themeCssVariables.spacing[2]};
   justify-content: space-between;
+  min-width: 0;
+`;
+
+const StyledIdentity = styled.div`
+  align-items: center;
+  display: flex;
+  gap: ${themeCssVariables.spacing[1]};
+  min-width: 0;
+`;
+
+const StyledHandle = styled.span`
+  color: ${themeCssVariables.font.color.tertiary};
+  font-size: ${themeCssVariables.font.size.xs};
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 const StyledUnknownSender = styled.span`
@@ -26,20 +45,22 @@ const StyledUnknownSender = styled.span`
 `;
 
 const StyledThreadMessageSentAt = styled.div`
-  align-items: flex-end;
   color: ${themeCssVariables.font.color.tertiary};
-  display: flex;
-  font-size: ${themeCssVariables.font.size.sm};
+  flex-shrink: 0;
+  font-size: ${themeCssVariables.font.size.xs};
+  white-space: nowrap;
 `;
 
 type EmailThreadMessageSenderProps = {
   sender?: EmailThreadMessageParticipant;
   sentAt: string | null;
+  shouldDisplayHandle?: boolean;
 };
 
 export const EmailThreadMessageSender = ({
   sender,
   sentAt,
+  shouldDisplayHandle = false,
 }: EmailThreadMessageSenderProps) => {
   const { localeCatalog } = useAtomStateValue(dateLocaleState);
   let sentAtContent = null;
@@ -63,7 +84,12 @@ export const EmailThreadMessageSender = ({
   return (
     <StyledEmailThreadMessageSender>
       {isDefined(sender) ? (
-        <ParticipantChip participant={sender} variant="bold" />
+        <StyledIdentity>
+          <ParticipantChip participant={sender} variant="bold" />
+          {shouldDisplayHandle && isNonEmptyString(sender.handle) && (
+            <StyledHandle>{sender.handle}</StyledHandle>
+          )}
+        </StyledIdentity>
       ) : (
         <StyledUnknownSender>{t`Unknown sender`}</StyledUnknownSender>
       )}

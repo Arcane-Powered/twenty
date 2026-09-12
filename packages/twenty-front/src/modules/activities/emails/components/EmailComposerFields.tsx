@@ -12,6 +12,7 @@ import { IconPaperclip } from 'twenty-ui/icon';
 import { useTheme, themeCssVariables } from 'twenty-ui/theme';
 
 import { ComposerFieldRow } from '@/activities/components/ComposerFieldRow';
+import { EmailComposerAiToolbar } from '@/activities/emails/ai/components/EmailComposerAiToolbar';
 import { ComposerHeader } from '@/activities/components/ComposerHeader';
 import { StyledComposerTextInput } from '@/activities/components/ComposerTextInput';
 import { EmailAttachmentsField } from '@/activities/emails/components/EmailAttachmentsField';
@@ -25,6 +26,7 @@ import { type EmailRecipientsFieldId } from '@/activities/emails/recipients/type
 import { getEmailRecipientKey } from '@/activities/emails/recipients/utils/getEmailRecipientKey';
 import { type EmailRecipientsByFieldId } from '@/activities/emails/recipients/utils/moveEmailRecipientsBetweenFields';
 import { type EmailComposerState } from '@/activities/emails/types/EmailComposerState';
+import { type EmailThreadMessageWithSender } from '@/activities/emails/types/EmailThreadMessageWithSender';
 import { type ConnectedAccount } from '@/accounts/types/ConnectedAccount';
 import { buildConnectedAccountSenderOptions } from '@/accounts/utils/buildConnectedAccountSenderOptions';
 import { FormAdvancedTextFieldInput } from '@/advanced-text-editor/components/FormAdvancedTextFieldInput';
@@ -33,6 +35,8 @@ import { DND_KIT_PROVIDER_PLUGINS_WITHOUT_DROP_ANIMATION } from '@/ui/utilities/
 import { DND_KIT_SENSORS } from '@/ui/utilities/drag-and-drop/constants/DndKitSensors';
 import { DragDropItemDndContext } from '@/ui/utilities/drag-and-drop/context/DragDropItemDndContext';
 import { GET_MY_CONNECTED_ACCOUNTS } from '@/settings/accounts/graphql/queries/getMyConnectedAccounts';
+import { useHasPermissionFlag } from '@/settings/roles/hooks/useHasPermissionFlag';
+import { PermissionFlagType } from 'twenty-shared/constants';
 
 const StyledFieldsContainer = styled.div`
   display: flex;
@@ -107,14 +111,19 @@ type EmailComposerFieldsProps = {
   // Surfaces without a composer footer of their own pass this so attaching
   // stays reachable from inside the form.
   onAttachFiles?: () => void;
+  messageThreadId?: string;
+  threadMessages?: EmailThreadMessageWithSender[];
 };
 
 export const EmailComposerFields = ({
   composerState,
   contextRecord,
   onAttachFiles,
+  messageThreadId,
+  threadMessages,
 }: EmailComposerFieldsProps) => {
   const theme = useTheme();
+  const hasAiPermission = useHasPermissionFlag(PermissionFlagType.AI);
   const { uploadEmailImage } = useUploadEmailImage();
   const { data: accountsData } = useQuery<{
     myConnectedAccounts: Pick<
@@ -288,9 +297,17 @@ export const EmailComposerFields = ({
           {t`Too many recipients (${composerState.recipientCount}/${composerState.maxRecipients}).`}
         </StyledRecipientLimitWarning>
       )}
+      {hasAiPermission && (
+        <EmailComposerAiToolbar
+          composerState={composerState}
+          messageThreadId={messageThreadId}
+          threadMessages={threadMessages}
+        />
+      )}
       <StyledBody>
         <FormAdvancedTextFieldInput
-          defaultValue={composerState.initialBody}
+          key={composerState.bodyResetKey}
+          defaultValue={composerState.editorDefaultBody}
           onChange={composerState.setBody}
           placeholder={t`Type something or press "/" to see commands`}
           profile={INLINE_EMAIL_BODY_EDITOR_PROFILE}
