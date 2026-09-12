@@ -33,6 +33,7 @@ import { validateWorkflowStepsHaveVariableReferences } from 'src/modules/workflo
 import { validateWorkflowIteratorStep } from 'src/modules/workflow/workflow-builder/workflow-validation/utils/validate-workflow-iterator-step.util';
 import { validateWorkflowAiAgentStep } from 'src/modules/workflow/workflow-builder/workflow-validation/utils/validate-workflow-ai-agent-step.util';
 import { validateWorkflowLogicFunctionOutputSchemaMismatch } from 'src/modules/workflow/workflow-builder/workflow-validation/utils/validate-workflow-logic-function-output-schema-mismatch.util';
+import { validateWorkflowQueryStep } from 'src/modules/workflow/workflow-builder/workflow-validation/utils/validate-workflow-query-step.util';
 import { WORKFLOW_RECORD_CRUD_ACTION_TYPES } from 'src/modules/workflow/workflow-builder/workflow-validation/constants/workflow-record-crud-action-types.constant';
 
 const OBJECT_TARGETING_ACTION_TYPES = new Set<WorkflowActionType>([
@@ -182,10 +183,17 @@ export class WorkflowValidationWorkspaceService {
         return step;
       }
 
-      return {
-        ...step,
-        settings: { ...step.settings, outputSchema: computedSchema },
-      };
+      // Overriding settings inline distributes the spread across every action
+      // type in the step union, which TypeScript cannot represent. Only
+      // outputSchema changes, and every settings type carries it.
+      const stepWithComputedSchema = { ...step };
+
+      stepWithComputedSchema.settings = {
+        ...stepWithComputedSchema.settings,
+        outputSchema: computedSchema,
+      } as TStep['settings'];
+
+      return stepWithComputedSchema;
     } catch {
       // Output schema enrichment is best-effort: if it cannot be computed,
       // validation still runs against the step's existing settings rather
@@ -223,6 +231,9 @@ export class WorkflowValidationWorkspaceService {
           issues.push(
             ...validateWorkflowIteratorStep({ step, steps, trigger }),
           );
+          break;
+        case WorkflowActionType.QUERY:
+          issues.push(...validateWorkflowQueryStep(step));
           break;
       }
     }
