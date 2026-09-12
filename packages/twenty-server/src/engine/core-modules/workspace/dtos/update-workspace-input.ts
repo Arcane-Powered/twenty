@@ -1,7 +1,12 @@
 import { Field, InputType } from '@nestjs/graphql';
 
 import GraphQLJSON from 'graphql-type-json';
-import { type AiModelTier } from 'twenty-shared/ai';
+import {
+  type AiModelTier,
+  type EmailAssistantLanguage,
+  type EmailAssistantLength,
+  type EmailAssistantTone,
+} from 'twenty-shared/ai';
 
 import {
   IsArray,
@@ -20,6 +25,9 @@ import {
 import { UUIDScalarType } from 'src/engine/api/graphql/workspace-schema-builder/graphql-types/scalars';
 import { WorkspaceDiscoverability } from 'src/engine/core-modules/workspace/types/workspace-discoverability.type';
 import { AiModelTier as AiModelTierEnum } from 'src/engine/metadata-modules/ai/ai-models/types/ai-model-tier.enum';
+import { EmailAssistantLanguage as EmailAssistantLanguageEnum } from 'src/engine/metadata-modules/ai/ai-email-assistant/types/email-assistant-language.enum';
+import { EmailAssistantLength as EmailAssistantLengthEnum } from 'src/engine/metadata-modules/ai/ai-email-assistant/types/email-assistant-length.enum';
+import { EmailAssistantTone as EmailAssistantToneEnum } from 'src/engine/metadata-modules/ai/ai-email-assistant/types/email-assistant-tone.enum';
 
 @InputType()
 export class UpdateWorkspaceInput {
@@ -143,6 +151,31 @@ export class UpdateWorkspaceInput {
   @IsString()
   @IsOptional()
   aiAdditionalInstructions?: string;
+
+  @Field({ nullable: true })
+  @IsString()
+  @IsOptional()
+  aiEmailInstructions?: string;
+
+  @Field(() => EmailAssistantToneEnum, { nullable: true })
+  @IsEnum(EmailAssistantToneEnum)
+  @IsOptional()
+  aiEmailTone?: EmailAssistantTone;
+
+  @Field(() => EmailAssistantLanguageEnum, { nullable: true })
+  @IsEnum(EmailAssistantLanguageEnum)
+  @IsOptional()
+  aiEmailLanguage?: EmailAssistantLanguage;
+
+  @Field(() => EmailAssistantLengthEnum, { nullable: true })
+  @IsEnum(EmailAssistantLengthEnum)
+  @IsOptional()
+  aiEmailLength?: EmailAssistantLength;
+
+  @Field({ nullable: true })
+  @IsBoolean()
+  @IsOptional()
+  isAiEmailAutoSummaryEnabled?: boolean;
 
   @Field(() => [String], { nullable: true })
   @IsArray()
