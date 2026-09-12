@@ -1,5 +1,10 @@
 import { createAtomState } from '@/ui/utilities/state/jotai/utils/createAtomState';
 import {
+  type EmailAssistantLanguage,
+  type EmailAssistantLength,
+  type EmailAssistantTone,
+} from 'twenty-shared/ai';
+import {
   type Application,
   type Role,
   type Workspace,
@@ -44,6 +49,13 @@ export type CurrentWorkspace = Pick<
   | 'editableProfileFields'
   | 'isInternalMessagesImportEnabled'
 > & {
+  // Declared here rather than picked from the generated Workspace until
+  // graphql:generate runs against a server carrying the email assistant fields.
+  aiEmailInstructions?: string | null;
+  aiEmailTone?: EmailAssistantTone;
+  aiEmailLanguage?: EmailAssistantLanguage;
+  aiEmailLength?: EmailAssistantLength;
+  isAiEmailAutoSummaryEnabled?: boolean;
   defaultRole?: Omit<Role, 'workspaceMembers' | 'agents' | 'apiKeys'> | null;
   workspaceCustomApplication: Pick<Application, 'id'> | null;
   installedApplications: Pick<

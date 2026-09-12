@@ -62,10 +62,19 @@ export const useEmailComposerState = ({
   );
   const [subject, setSubject] = useState(initialSubject);
   const [body, setBody] = useState(initialBody);
+  const [editorDefaultBody, setEditorDefaultBody] = useState(initialBody);
+  // The editor is uncontrolled, so replacing its content means remounting it.
+  const [bodyResetKey, setBodyResetKey] = useState(0);
   const [showCcBcc, setShowCcBcc] = useState(
     initialCc.length > 0 || initialBcc.length > 0,
   );
   const [files, setFiles] = useState<EmailAttachment[]>([]);
+
+  const replaceBody = useCallback((nextSerializedBody: string) => {
+    setBody(nextSerializedBody);
+    setEditorDefaultBody(nextSerializedBody);
+    setBodyResetKey((resetKey) => resetKey + 1);
+  }, []);
 
   const { sendEmail, loading } = useSendEmail();
 
@@ -142,6 +151,9 @@ export const useEmailComposerState = ({
     setSubject,
     body,
     setBody,
+    replaceBody,
+    editorDefaultBody,
+    bodyResetKey,
     showCcBcc,
     setShowCcBcc,
     files,

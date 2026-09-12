@@ -10,7 +10,13 @@ import { useMutation, useQuery } from '@apollo/client/react';
 import { styled } from '@linaria/react';
 import { t } from '@lingui/core/macro';
 import { Fragment, useContext, useState } from 'react';
-import { IconBook, IconMessage, IconSparkles, IconTool } from 'twenty-ui/icon';
+import {
+  IconBook,
+  IconMail,
+  IconMessage,
+  IconSparkles,
+  IconTool,
+} from 'twenty-ui/icon';
 import { H2Title } from 'twenty-ui/typography';
 import { Section } from 'twenty-ui/layout';
 import { UndecoratedLink } from 'twenty-ui/navigation';
@@ -119,6 +125,19 @@ export const SettingsAiOverviewTab = () => {
           <SettingsCard
             Icon={<IconSparkles size={theme.icon.size.md} />}
             title={t`Set up MCP`}
+          />
+        </UndecoratedLink>
+      </Section>
+
+      <Section>
+        <H2Title
+          title={t`Emails`}
+          description={t`Context and defaults used to summarize threads and write replies`}
+        />
+        <UndecoratedLink to={getSettingsPath(SettingsPath.AiEmail)}>
+          <SettingsCard
+            Icon={<IconMail size={theme.icon.size.md} />}
+            title={t`Email assistant`}
           />
         </UndecoratedLink>
       </Section>
