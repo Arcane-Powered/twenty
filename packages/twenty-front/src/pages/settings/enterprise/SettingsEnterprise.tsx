@@ -13,6 +13,7 @@ import {
   ENTERPRISE_PLAN_MODAL_ID,
   EnterprisePlanModal,
 } from '@/settings/enterprise/components/EnterprisePlanModal';
+import { IS_ENTERPRISE_UNLOCKED } from '@/settings/enterprise/constants/IsEnterpriseUnlocked';
 import { REFRESH_ENTERPRISE_VALIDITY_TOKEN } from '@/settings/enterprise/graphql/mutations/refreshEnterpriseValidityToken';
 import { RELEASE_ENTERPRISE_SERVER_BINDING } from '@/settings/enterprise/graphql/mutations/releaseEnterpriseServerBinding';
 import { SET_ENTERPRISE_KEY } from '@/settings/enterprise/graphql/mutations/setEnterpriseKey';
@@ -632,6 +633,17 @@ export const SettingsEnterprise = ({
   );
 
   const renderContent = () => {
+    if (IS_ENTERPRISE_UNLOCKED) {
+      return (
+        <Section>
+          <H2Title
+            title={t`Enterprise features`}
+            description={t`All enterprise features are enabled on this instance. No enterprise key is required.`}
+          />
+        </Section>
+      );
+    }
+
     if (!isStatusLoaded) {
       return null;
     }
@@ -1023,8 +1035,10 @@ export const SettingsEnterprise = ({
         onConfirmClick={handleReleaseBinding}
       />
       {renderContent()}
-      {hasSignedEnterpriseKey && enterpriseKeyInfoSection}
-      {hasEnterpriseLicense && instanceTypeSection}
+      {!IS_ENTERPRISE_UNLOCKED &&
+        hasSignedEnterpriseKey &&
+        enterpriseKeyInfoSection}
+      {!IS_ENTERPRISE_UNLOCKED && hasEnterpriseLicense && instanceTypeSection}
     </>
   );
 

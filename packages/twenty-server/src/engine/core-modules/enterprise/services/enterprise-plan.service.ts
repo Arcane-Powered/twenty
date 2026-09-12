@@ -19,6 +19,7 @@ import {
   ENTERPRISE_JWT_DEV_PUBLIC_KEY,
   ENTERPRISE_JWT_PUBLIC_KEY,
 } from 'src/engine/core-modules/enterprise/constants/enterprise-public-key.constant';
+import { IS_ENTERPRISE_UNLOCKED } from 'src/engine/core-modules/enterprise/constants/is-enterprise-unlocked.constant';
 import {
   EnterpriseException,
   EnterpriseExceptionCode,
@@ -157,6 +158,10 @@ export class EnterprisePlanService implements OnModuleInit {
   }
 
   hasValidEnterpriseValidityToken(): boolean {
+    if (IS_ENTERPRISE_UNLOCKED) {
+      return true;
+    }
+
     if (isDefined(this.cachedValidityPayload)) {
       const now = Math.floor(Date.now() / 1000);
 
