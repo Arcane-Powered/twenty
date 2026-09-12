@@ -11,6 +11,7 @@ import { type WorkflowHttpRequestActionSettings } from 'src/modules/workflow/wor
 import { type WorkflowIfElseActionSettings } from 'src/modules/workflow/workflow-executor/workflow-actions/if-else/types/workflow-if-else-action-settings.type';
 import { type WorkflowIteratorActionSettings } from 'src/modules/workflow/workflow-executor/workflow-actions/iterator/types/workflow-iterator-action-settings.type';
 import { type WorkflowLogicFunctionActionSettings } from 'src/modules/workflow/workflow-executor/workflow-actions/logic-function/types/workflow-logic-function-action-settings.type';
+import { type WorkflowQueryActionSettings } from 'src/modules/workflow/workflow-executor/workflow-actions/query/types/workflow-query-action-settings.type';
 import { type WorkflowSendEmailActionSettings } from 'src/modules/workflow/workflow-executor/workflow-actions/mail-sender/types/workflow-send-email-action-settings.type';
 import {
   type WorkflowCreateRecordActionSettings,
@@ -110,6 +111,11 @@ export type WorkflowHttpRequestAction = BaseWorkflowAction & {
   settings: WorkflowHttpRequestActionSettings;
 };
 
+export type WorkflowQueryAction = BaseWorkflowAction & {
+  type: WorkflowActionType.QUERY;
+  settings: WorkflowQueryActionSettings;
+};
+
 export type WorkflowAiAgentAction = BaseWorkflowAction & {
   type: WorkflowActionType.AI_AGENT;
   settings: WorkflowAiAgentActionSettings;
@@ -150,6 +156,7 @@ export type WorkflowAction =
   | WorkflowFilterAction
   | WorkflowIfElseAction
   | WorkflowHttpRequestAction
+  | WorkflowQueryAction
   | WorkflowAiAgentAction
   | WorkflowClassifyAction
   | WorkflowIteratorAction

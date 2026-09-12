@@ -35,7 +35,8 @@ export type WorkflowValidationIssueCode =
   | 'AI_AGENT_MISSING_AGENT'
   | 'AI_AGENT_MISSING_OUTPUT_VARIABLE'
   | 'CLASSIFY_MISSING_STATE'
-  | 'CLASSIFY_INCOMPLETE_QUESTION';
+  | 'CLASSIFY_INCOMPLETE_QUESTION'
+  | 'QUERY_STEP_INVALID_DOCUMENT';
 
 export type WorkflowValidationIssue = {
   severity: WorkflowValidationSeverity;

@@ -14,6 +14,7 @@ export enum WorkflowActionType {
   FILTER = 'FILTER',
   IF_ELSE = 'IF_ELSE',
   HTTP_REQUEST = 'HTTP_REQUEST',
+  QUERY = 'QUERY',
   AI_AGENT = 'AI_AGENT',
   CLASSIFY = 'CLASSIFY',
   ITERATOR = 'ITERATOR',

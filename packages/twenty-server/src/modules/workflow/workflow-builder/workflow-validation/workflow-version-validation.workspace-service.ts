@@ -17,6 +17,7 @@ import {
 import { getWorkflowRecordStepMetadataIssues } from 'src/modules/workflow/workflow-builder/workflow-validation/utils/get-workflow-record-step-metadata-issues.util';
 import { validateWorkflowAiAgentStep } from 'src/modules/workflow/workflow-builder/workflow-validation/utils/validate-workflow-ai-agent-step.util';
 import { validateWorkflowClassifyStep } from 'src/modules/workflow/workflow-builder/workflow-validation/utils/validate-workflow-classify-step.util';
+import { validateWorkflowQueryStep } from 'src/modules/workflow/workflow-builder/workflow-validation/utils/validate-workflow-query-step.util';
 import { type WorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/types/workflow-action.type';
 import { type WorkflowTrigger } from 'src/modules/workflow/workflow-trigger/types/workflow-trigger.type';
 
@@ -78,6 +79,10 @@ export class WorkflowVersionValidationWorkspaceService {
 
       if (step.type === WorkflowActionType.CLASSIFY) {
         return validateWorkflowClassifyStep(step);
+      }
+
+      if (step.type === WorkflowActionType.QUERY) {
+        return validateWorkflowQueryStep(step);
       }
 
       return [];

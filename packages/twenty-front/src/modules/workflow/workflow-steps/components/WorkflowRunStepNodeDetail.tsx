@@ -19,6 +19,7 @@ import { WorkflowEditActionFilter } from '@/workflow/workflow-steps/workflow-act
 import { WorkflowEditActionFindRecords } from '@/workflow/workflow-steps/workflow-actions/find-records-action/components/WorkflowEditActionFindRecords';
 import { WorkflowEditActionFormFiller } from '@/workflow/workflow-steps/workflow-actions/form-action/components/WorkflowEditActionFormFiller';
 import { WorkflowEditActionHttpRequest } from '@/workflow/workflow-steps/workflow-actions/http-request-action/components/WorkflowEditActionHttpRequest';
+import { WorkflowEditActionQuery } from '@/workflow/workflow-steps/workflow-actions/query-action/components/WorkflowEditActionQuery';
 import { WorkflowEditActionIfElse } from '@/workflow/workflow-steps/workflow-actions/if-else-action/components/WorkflowEditActionIfElse';
 import { WorkflowEditActionIterator } from '@/workflow/workflow-steps/workflow-actions/iterator-action/components/WorkflowEditActionIterator';
 import { WorkflowEditActionPickRecord } from '@/workflow/workflow-steps/workflow-actions/pick-record-action/components/WorkflowEditActionPickRecord';
@@ -242,6 +243,17 @@ export const WorkflowRunStepNodeDetail = ({
         case 'HTTP_REQUEST': {
           return (
             <WorkflowEditActionHttpRequest
+              key={stepId}
+              action={stepDefinition.definition}
+              actionOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
+        case 'QUERY': {
+          return (
+            <WorkflowEditActionQuery
               key={stepId}
               action={stepDefinition.definition}
               actionOptions={{

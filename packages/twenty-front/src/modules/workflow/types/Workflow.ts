@@ -17,6 +17,7 @@ import {
   type workflowFindRecordsActionSchema,
   type workflowFormActionSchema,
   type workflowHttpRequestActionSchema,
+  type workflowQueryActionSchema,
   type workflowIfElseActionSchema,
   type workflowIteratorActionSchema,
   type workflowLogicFunctionActionSchema,
@@ -72,6 +73,7 @@ export type WorkflowIfElseAction = z.infer<typeof workflowIfElseActionSchema>;
 export type WorkflowHttpRequestAction = z.infer<
   typeof workflowHttpRequestActionSchema
 >;
+export type WorkflowQueryAction = z.infer<typeof workflowQueryActionSchema>;
 export type WorkflowIteratorAction = z.infer<
   typeof workflowIteratorActionSchema
 >;
@@ -97,6 +99,7 @@ export type WorkflowAction =
   | WorkflowIfElseAction
   | WorkflowFormAction
   | WorkflowHttpRequestAction
+  | WorkflowQueryAction
   | WorkflowAiAgentAction
   | WorkflowClassifyAction
   | WorkflowIteratorAction

@@ -544,6 +544,22 @@ export class WorkflowVersionStepOperationsWorkspaceService {
           },
         };
       }
+      case WorkflowActionType.QUERY: {
+        return {
+          builtStep: {
+            ...baseStep,
+            name: 'Query',
+            type: WorkflowActionType.QUERY,
+            settings: {
+              ...BASE_STEP_DEFINITION,
+              input: {
+                query: '',
+                variables: {},
+              },
+            },
+          },
+        };
+      }
       case WorkflowActionType.AI_AGENT: {
         const newAgent = await this.agentService.createOneAgent(
           {

@@ -15,7 +15,7 @@ import {
   type GraphQLFormattedError,
   type GraphQLResolveInfo,
 } from 'graphql';
-import { SOURCE_LOCALE } from 'twenty-shared/translations';
+import { APP_LOCALES, SOURCE_LOCALE } from 'twenty-shared/translations';
 import { isDefined } from 'twenty-shared/utils';
 
 import graphqlFields from 'graphql-fields';
@@ -195,7 +195,15 @@ export class DirectExecutionService {
       hasIntrospectionFields
         ? this.executeIntrospectionQuery(req, document)
         : null,
-      hasWorkspaceFields ? this.executeWorkspaceQuery(req, document) : null,
+      hasWorkspaceFields
+        ? this.executeWorkspaceDocument({
+            workspaceId: req.workspace?.id,
+            document,
+            operationName: req.body.operationName,
+            variables: req.body.variables,
+            locale: req.locale,
+          })
+        : null,
     ]);
 
     return this.mergeDirectExecutionResults(
@@ -204,26 +212,36 @@ export class DirectExecutionService {
     );
   }
 
-  private async executeWorkspaceQuery(
-    req: Request,
-    document: DocumentNode,
-  ): Promise<DirectExecutionResult | null> {
+  // Executes a document against the workspace resolvers without going through
+  // an HTTP request, so non-request callers (workflow steps) run the exact same
+  // path as the API, auth context and permissions included.
+  async executeWorkspaceDocument({
+    workspaceId,
+    document,
+    operationName,
+    variables: rawVariables,
+    locale,
+  }: {
+    workspaceId: string | undefined;
+    document: DocumentNode;
+    operationName?: string;
+    variables?: Record<string, unknown>;
+    locale?: keyof typeof APP_LOCALES;
+  }): Promise<DirectExecutionResult | null> {
     try {
-      const workspaceId = req.workspace?.id;
-
       if (!isDefined(workspaceId)) {
         return null;
       }
 
       const topLevelFields = graphQLExtractTopLevelFields(
         document,
-        req.body.operationName,
+        operationName,
       );
 
       this.checkRootResolverLimitsOrThrow(topLevelFields);
 
       const fragmentMap = graphQLBuildFragmentMap(document);
-      const variables = req.body.variables ?? {};
+      const variables = rawVariables ?? {};
       const data: Record<string, unknown> = {};
 
       const {
@@ -299,7 +317,7 @@ export class DirectExecutionService {
             data[responseKey] = formattedResult;
           } catch (error) {
             data[responseKey] = null;
-            errors.push(this.formatError(error, req));
+            errors.push(this.formatError(error, locale));
           }
         }),
       );
@@ -310,7 +328,7 @@ export class DirectExecutionService {
 
       return { data };
     } catch (error) {
-      return { errors: [this.formatError(error, req)] };
+      return { errors: [this.formatError(error, locale)] };
     }
   }
 
@@ -346,7 +364,7 @@ export class DirectExecutionService {
         errors: result.errors?.map((error) => error.toJSON()),
       };
     } catch (error) {
-      return { errors: [this.formatError(error, req)] };
+      return { errors: [this.formatError(error, req.locale)] };
     }
   }
 
@@ -409,7 +427,10 @@ export class DirectExecutionService {
     );
   }
 
-  private formatError(error: unknown, req: Request): GraphQLFormattedError {
+  private formatError(
+    error: unknown,
+    locale?: keyof typeof APP_LOCALES,
+  ): GraphQLFormattedError {
     if (!(error instanceof Error)) {
       return {
         message: 'Internal server error',
@@ -424,7 +445,7 @@ export class DirectExecutionService {
         const json = graphqlError.toJSON();
 
         if (json.extensions?.userFriendlyMessage) {
-          const userLocale = req.locale ?? SOURCE_LOCALE;
+          const userLocale = locale ?? SOURCE_LOCALE;
           const i18n = this.i18nService.getI18nInstance(userLocale);
 
           json.extensions.userFriendlyMessage = i18n._(

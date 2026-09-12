@@ -19,6 +19,7 @@ export const getActionIcon = (actionType: WorkflowActionType) => {
       return AI_ACTIONS.find((item) => item.type === actionType)?.icon;
     case 'CODE':
     case 'HTTP_REQUEST':
+    case 'QUERY':
     case 'SEND_EMAIL':
     case 'DRAFT_EMAIL':
     case 'CREATE_CALENDAR_EVENT':
