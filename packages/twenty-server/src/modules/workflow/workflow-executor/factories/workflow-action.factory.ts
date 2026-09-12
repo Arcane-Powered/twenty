@@ -17,6 +17,7 @@ import { IfElseWorkflowAction } from 'src/modules/workflow/workflow-executor/wor
 import { CreateCalendarEventWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/create-calendar-event/create-calendar-event.workflow-action';
 import { IteratorWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/iterator/iterator.workflow-action';
 import { LogicFunctionWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/logic-function/logic-function.workflow-action';
+import { QueryWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/query/query.workflow-action';
 import { DraftEmailWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/mail-sender/draft-email.workflow-action';
 import { SendEmailWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/mail-sender/send-email.workflow-action';
 import { CreateRecordWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/record-crud/create-record.workflow-action';
@@ -43,6 +44,7 @@ export class WorkflowActionFactory {
     private readonly ifElseWorkflowAction: IfElseWorkflowAction,
     private readonly iteratorWorkflowAction: IteratorWorkflowAction,
     private readonly httpRequestWorkflowAction: HttpRequestWorkflowAction,
+    private readonly queryWorkflowAction: QueryWorkflowAction,
     private readonly sendEmailWorkflowAction: SendEmailWorkflowAction,
     private readonly draftEmailWorkflowAction: DraftEmailWorkflowAction,
     private readonly createCalendarEventWorkflowAction: CreateCalendarEventWorkflowAction,
@@ -85,6 +87,8 @@ export class WorkflowActionFactory {
         return this.iteratorWorkflowAction;
       case WorkflowActionType.HTTP_REQUEST:
         return this.httpRequestWorkflowAction;
+      case WorkflowActionType.QUERY:
+        return this.queryWorkflowAction;
       case WorkflowActionType.AI_AGENT:
         return this.aiAgentWorkflowAction;
       case WorkflowActionType.EMPTY:

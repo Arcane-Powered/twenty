@@ -34,7 +34,8 @@ export type WorkflowValidationIssueCode =
   | 'STEP_HAS_NO_VARIABLE_REFERENCE'
   | 'LOGIC_FUNCTION_OUTPUT_SCHEMA_MISMATCH'
   | 'AI_AGENT_MISSING_AGENT'
-  | 'AI_AGENT_MISSING_OUTPUT_VARIABLE';
+  | 'AI_AGENT_MISSING_OUTPUT_VARIABLE'
+  | 'QUERY_STEP_INVALID_DOCUMENT';
 
 export type WorkflowValidationIssue = {
   severity: WorkflowValidationSeverity;

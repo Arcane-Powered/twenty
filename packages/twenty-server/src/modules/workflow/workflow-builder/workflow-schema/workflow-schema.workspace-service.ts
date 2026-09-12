@@ -41,6 +41,9 @@ import {
 import { extractPropertyPathFromVariable } from 'src/modules/workflow/workflow-builder/workflow-schema/utils/extract-property-path-from-variable';
 import { generateFakeArrayItem } from 'src/modules/workflow/workflow-builder/workflow-schema/utils/generate-fake-array-item';
 import { generateFakeFormResponse } from 'src/modules/workflow/workflow-builder/workflow-schema/utils/generate-fake-form-response';
+import { WorkspaceGraphqlTypeSchemaService } from 'src/engine/api/graphql/workspace-graphql-schema-sdl/workspace-graphql-type-schema.service';
+import { buildOutputSchemaFromGraphqlDocument } from 'src/modules/workflow/workflow-builder/workflow-schema/utils/build-output-schema-from-graphql-document.util';
+import { parseWorkflowQueryDocument } from 'src/modules/workflow/workflow-executor/workflow-actions/query/utils/parse-workflow-query-document.util';
 import { generateFakeObjectRecord } from 'src/modules/workflow/workflow-builder/workflow-schema/utils/generate-fake-object-record';
 import { generateFakeObjectRecordEvent } from 'src/modules/workflow/workflow-builder/workflow-schema/utils/generate-fake-object-record-event';
 import { inferArrayItemSchema } from 'src/modules/workflow/workflow-builder/workflow-schema/utils/infer-array-item-schema';
@@ -58,6 +61,7 @@ export class WorkflowSchemaWorkspaceService {
   constructor(
     private readonly workflowCommonWorkspaceService: WorkflowCommonWorkspaceService,
     private readonly flatEntityMapsCacheService: WorkspaceManyOrAllFlatEntityMapsCacheService,
+    private readonly workspaceGraphqlTypeSchemaService: WorkspaceGraphqlTypeSchemaService,
   ) {}
 
   async computeStepOutputSchema({
@@ -144,6 +148,12 @@ export class WorkflowSchemaWorkspaceService {
           workspaceId,
         });
       }
+      case WorkflowActionType.QUERY: {
+        return this.computeQueryActionOutputSchema({
+          query: step.settings.input.query,
+          workspaceId,
+        });
+      }
       case WorkflowTriggerType.WEBHOOK:
       case WorkflowActionType.CODE:
       case WorkflowActionType.HTTP_REQUEST: {
@@ -178,6 +188,7 @@ export class WorkflowSchemaWorkspaceService {
     const BACKEND_ENRICHED_TYPES = [
       WorkflowActionType.ITERATOR,
       WorkflowActionType.AI_AGENT,
+      WorkflowActionType.QUERY,
     ];
 
     if (!BACKEND_ENRICHED_TYPES.includes(step.type)) {
@@ -197,6 +208,36 @@ export class WorkflowSchemaWorkspaceService {
     };
 
     return result;
+  }
+
+  private async computeQueryActionOutputSchema({
+    query,
+    workspaceId,
+  }: {
+    query: string;
+    workspaceId: string;
+  }): Promise<OutputSchema> {
+    let parsedDocument: ReturnType<typeof parseWorkflowQueryDocument>;
+
+    try {
+      parsedDocument = parseWorkflowQueryDocument(query);
+    } catch {
+      return {};
+    }
+
+    const schema = await this.workspaceGraphqlTypeSchemaService.getTypeSchema({
+      workspaceId,
+    });
+
+    if (!isDefined(schema)) {
+      return {};
+    }
+
+    return buildOutputSchemaFromGraphqlDocument({
+      document: parsedDocument.document,
+      schema,
+      operationName: parsedDocument.operationName,
+    });
   }
 
   private computeOutputSchemaFromExpectedSample(

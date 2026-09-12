@@ -9,6 +9,7 @@ export const getActionIconColorOrThrow = (
     case 'CODE':
     case 'LOGIC_FUNCTION':
     case 'HTTP_REQUEST':
+    case 'QUERY':
     case 'SEND_EMAIL':
     case 'DRAFT_EMAIL':
     case 'CREATE_CALENDAR_EVENT':

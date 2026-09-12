@@ -72,6 +72,8 @@ export {
   workflowPickRecordStrategySchema,
   workflowPickRecordActionSettingsSchema,
 } from './schemas/pick-record-action-settings-schema';
+export { workflowQueryActionSchema } from './schemas/query-action-schema';
+export { workflowQueryActionSettingsSchema } from './schemas/query-action-settings-schema';
 export { workflowSendEmailActionSchema } from './schemas/send-email-action-schema';
 export type { WorkflowEmailFiles } from './schemas/send-email-action-settings-schema';
 export {

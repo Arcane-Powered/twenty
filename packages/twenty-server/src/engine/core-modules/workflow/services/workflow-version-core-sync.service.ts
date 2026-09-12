@@ -5,6 +5,7 @@ import { isNonEmptyString } from '@sniptt/guards';
 import { STANDARD_OBJECTS } from 'twenty-shared/metadata';
 import { isDefined, isNonEmptyArray } from 'twenty-shared/utils';
 import { In, Repository } from 'typeorm';
+import { type QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
 import { v4 as uuidv4 } from 'uuid';
 
 import {
@@ -98,9 +99,13 @@ export class WorkflowVersionCoreSyncService {
       };
     });
 
-    await this.coreWorkflowVersionRepository.upsert(workspaceId, coreRows, [
-      'id',
-    ]);
+    // steps is a jsonb column holding the action union; TypeORM's deep partial
+    // distributes over it and cannot represent the result.
+    await this.coreWorkflowVersionRepository.upsert(
+      workspaceId,
+      coreRows as QueryDeepPartialEntity<WorkflowVersionEntity>[],
+      ['id'],
+    );
 
     await this.writeBackCoreVersionIds(
       workspaceId,
