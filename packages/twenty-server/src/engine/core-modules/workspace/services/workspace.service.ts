@@ -149,6 +149,11 @@ export class WorkspaceService {
     aiModelIdByTier: PermissionFlagType.AI_SETTINGS,
     aiEvaluationModelId: PermissionFlagType.AI_SETTINGS,
     aiAdditionalInstructions: PermissionFlagType.WORKSPACE,
+    aiEmailInstructions: PermissionFlagType.WORKSPACE,
+    aiEmailTone: PermissionFlagType.WORKSPACE,
+    aiEmailLanguage: PermissionFlagType.WORKSPACE,
+    aiEmailLength: PermissionFlagType.WORKSPACE,
+    isAiEmailAutoSummaryEnabled: PermissionFlagType.WORKSPACE,
     isInternalMessagesImportEnabled: PermissionFlagType.WORKSPACE,
   };
 
