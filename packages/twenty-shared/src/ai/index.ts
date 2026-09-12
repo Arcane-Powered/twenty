@@ -26,6 +26,19 @@ export type { DatabaseCrudOperation } from './constants/database-crud-operation.
 export { DATABASE_CRUD_OPERATIONS } from './constants/database-crud-operation.const';
 export { DEFAULT_AI_AGENT_MODEL_TIER } from './constants/default-ai-agent-model-tier.const';
 export { DEFAULT_AI_CHAT_MODEL_TIER } from './constants/default-ai-chat-model-tier.const';
+export {
+  DEFAULT_EMAIL_ASSISTANT_TONE,
+  DEFAULT_EMAIL_ASSISTANT_LANGUAGE,
+  DEFAULT_EMAIL_ASSISTANT_LENGTH,
+} from './constants/default-email-assistant-settings.const';
+export type { EmailAssistantLanguage } from './constants/email-assistant-language.const';
+export { EMAIL_ASSISTANT_LANGUAGES } from './constants/email-assistant-language.const';
+export type { EmailAssistantLength } from './constants/email-assistant-length.const';
+export { EMAIL_ASSISTANT_LENGTHS } from './constants/email-assistant-length.const';
+export type { EmailAssistantTone } from './constants/email-assistant-tone.const';
+export { EMAIL_ASSISTANT_TONES } from './constants/email-assistant-tone.const';
+export type { EmailDraftMode } from './constants/email-draft-mode.const';
+export { EMAIL_DRAFT_MODES } from './constants/email-draft-mode.const';
 export type { NativeAiSdkProviderId } from './constants/native-ai-sdk-provider-ids.const';
 export { NATIVE_AI_SDK_PROVIDER_IDS } from './constants/native-ai-sdk-provider-ids.const';
 export { ToolCategory } from './constants/tool-category.const';

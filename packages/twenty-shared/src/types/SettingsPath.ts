@@ -41,6 +41,7 @@ export enum SettingsPath {
   AI = 'ai',
   AiUsageUserDetail = 'ai/usage/user/:userWorkspaceId',
   AiPrompts = 'ai/prompts',
+  AiEmail = 'ai/email',
   AiNewAgent = 'ai/new-agent',
   AiAgentDetail = 'ai/agents/:agentId',
   AiAgentTurnDetail = 'ai/agents/:agentId/turns/:turnId',

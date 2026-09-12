@@ -5,7 +5,13 @@ import GraphQLJSON from 'graphql-type-json';
 import {
   DEFAULT_AI_AGENT_MODEL_TIER,
   DEFAULT_AI_CHAT_MODEL_TIER,
+  DEFAULT_EMAIL_ASSISTANT_LANGUAGE,
+  DEFAULT_EMAIL_ASSISTANT_LENGTH,
+  DEFAULT_EMAIL_ASSISTANT_TONE,
   type AiModelTier,
+  type EmailAssistantLanguage,
+  type EmailAssistantLength,
+  type EmailAssistantTone,
 } from 'twenty-shared/ai';
 import { WorkspaceActivationStatus } from 'twenty-shared/workspace';
 import {
@@ -42,6 +48,9 @@ import { UserWorkspaceEntity } from 'src/engine/core-modules/user-workspace/user
 import { WorkspaceDiscoverability } from 'src/engine/core-modules/workspace/types/workspace-discoverability.type';
 import { AgentEntity } from 'src/engine/metadata-modules/ai/ai-agent/entities/agent.entity';
 import { AiModelTier as AiModelTierEnum } from 'src/engine/metadata-modules/ai/ai-models/types/ai-model-tier.enum';
+import { EmailAssistantLanguage as EmailAssistantLanguageEnum } from 'src/engine/metadata-modules/ai/ai-email-assistant/types/email-assistant-language.enum';
+import { EmailAssistantLength as EmailAssistantLengthEnum } from 'src/engine/metadata-modules/ai/ai-email-assistant/types/email-assistant-length.enum';
+import { EmailAssistantTone as EmailAssistantToneEnum } from 'src/engine/metadata-modules/ai/ai-email-assistant/types/email-assistant-tone.enum';
 import { RoleDTO } from 'src/engine/metadata-modules/role/dtos/role.dto';
 import { ViewFieldDTO } from 'src/engine/metadata-modules/view-field/dtos/view-field.dto';
 import { ViewFieldEntity } from 'src/engine/metadata-modules/view-field/entities/view-field.entity';
@@ -345,6 +354,38 @@ export class WorkspaceEntity {
   @Field(() => String, { nullable: true })
   @Column({ type: 'text', nullable: true })
   aiAdditionalInstructions: string | null;
+
+  @Field(() => String, { nullable: true })
+  @Column({ type: 'text', nullable: true })
+  aiEmailInstructions: string | null;
+
+  @Field(() => EmailAssistantToneEnum, { nullable: false })
+  @Column({
+    type: 'varchar',
+    nullable: false,
+    default: DEFAULT_EMAIL_ASSISTANT_TONE,
+  })
+  aiEmailTone: EmailAssistantTone;
+
+  @Field(() => EmailAssistantLanguageEnum, { nullable: false })
+  @Column({
+    type: 'varchar',
+    nullable: false,
+    default: DEFAULT_EMAIL_ASSISTANT_LANGUAGE,
+  })
+  aiEmailLanguage: EmailAssistantLanguage;
+
+  @Field(() => EmailAssistantLengthEnum, { nullable: false })
+  @Column({
+    type: 'varchar',
+    nullable: false,
+    default: DEFAULT_EMAIL_ASSISTANT_LENGTH,
+  })
+  aiEmailLength: EmailAssistantLength;
+
+  @Field(() => Boolean, { nullable: false })
+  @Column({ type: 'boolean', nullable: false, default: true })
+  isAiEmailAutoSummaryEnabled: boolean;
 
   @Column({ nullable: false, type: 'uuid' })
   workspaceCustomApplicationId: string;
