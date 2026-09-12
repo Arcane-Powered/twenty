@@ -45,6 +45,14 @@ if ! yarn command:prod cache:flush; then
 fi
 step_done
 
+# The upgrade cursor resumes from the last applied step, so an instance command
+# added to a version whose workspace commands already ran is never reached.
+step_start "Applying pending instance commands"
+if ! yarn database:migrate:prod; then
+  echo "Warning: Failed to apply pending instance commands, but continuing startup..."
+fi
+step_done
+
 step_start "Running upgrade"
 if ! yarn command:prod upgrade; then
   echo "Warning: Upgrade completed with errors. Some workspaces may not be fully migrated. Check logs for details."
