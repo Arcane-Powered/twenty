@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 import { generateText } from 'ai';
 import { isNonEmptyString } from '@sniptt/guards';
-import { isDefined } from 'twenty-shared/utils';
+import { isDefined, tipTapDocumentToMarkdown } from 'twenty-shared/utils';
 
 import { UsageOperationType } from 'src/engine/core-modules/usage/enums/usage-operation-type.enum';
 import { type WorkspaceEntity } from 'src/engine/core-modules/workspace/workspace.entity';
@@ -154,7 +154,10 @@ export class AiEmailAssistantService {
     toneOverride?: GenerateEmailDraftInput['tone'],
   ): string {
     return buildEmailAssistantGuidelines({
-      instructions: workspace.aiEmailInstructions,
+      // Settings store the context as a rich text document, not as raw text.
+      instructions: tipTapDocumentToMarkdown(
+        workspace.aiEmailInstructions ?? '',
+      ),
       tone: toneOverride ?? workspace.aiEmailTone,
       language: workspace.aiEmailLanguage,
       length: workspace.aiEmailLength,
