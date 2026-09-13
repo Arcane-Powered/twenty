@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 
 import { WorkspaceIteratorModule } from 'src/database/commands/command-runners/workspace-iterator.module';
+import { AddMessageFilesFieldCommand } from 'src/database/commands/upgrade-version-command/2-41/2-41-workspace-command-1789303126983-add-message-files-field.command';
 import { WidenTestWorkflowAvailabilityCommand } from 'src/database/commands/upgrade-version-command/2-41/2-41-workspace-command-1789175395591-widen-test-workflow-availability.command';
 import { ApplicationModule } from 'src/engine/core-modules/application/application.module';
 import { WorkspaceCacheModule } from 'src/engine/workspace-cache/workspace-cache.module';
@@ -13,6 +14,6 @@ import { WorkspaceMigrationModule } from 'src/engine/workspace-manager/workspace
     WorkspaceIteratorModule,
     WorkspaceMigrationModule,
   ],
-  providers: [WidenTestWorkflowAvailabilityCommand],
+  providers: [WidenTestWorkflowAvailabilityCommand, AddMessageFilesFieldCommand],
 })
 export class V2_41_UpgradeVersionCommandModule {}

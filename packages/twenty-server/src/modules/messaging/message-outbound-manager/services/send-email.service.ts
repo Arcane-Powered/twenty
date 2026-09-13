@@ -92,6 +92,7 @@ export class SendEmailService {
         inReplyTo: data.inReplyTo,
         parentThreadExternalId: data.threadExternalId,
         workspaceId,
+        files: data.files,
       });
     } catch (persistenceError) {
       this.logger.warn(

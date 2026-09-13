@@ -1,5 +1,8 @@
 import { isNonEmptyString } from '@sniptt/guards';
 import { MessageParticipantRole } from 'twenty-shared/types';
+import { isNonEmptyArray } from 'twenty-shared/utils';
+
+import { type FileInput } from 'src/engine/api/common/common-args-processors/data-arg-processor/types/file-item.type';
 
 import { MessageDirection } from 'src/modules/messaging/common/enums/message-direction.enum';
 import {
@@ -11,6 +14,7 @@ import { resolveOutboundThreadExternalId } from 'src/modules/messaging/message-o
 
 export const formatSentMessage = (
   input: PersistSentMessageInput,
+  messageFiles: FileInput[] = [],
 ): MessageWithParticipants => {
   const senderHandle = input.connectedAccount.handle ?? '';
 
@@ -56,5 +60,6 @@ export const formatSentMessage = (
     attachments: [],
     participants,
     isDraft: false,
+    ...(isNonEmptyArray(messageFiles) ? { files: messageFiles } : {}),
   };
 };

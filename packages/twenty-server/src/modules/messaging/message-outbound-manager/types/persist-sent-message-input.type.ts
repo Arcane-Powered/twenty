@@ -1,3 +1,5 @@
+import { type EmailAttachment } from 'twenty-shared/types';
+
 import { type ConnectedAccountEntity } from 'src/engine/metadata-modules/connected-account/entities/connected-account.entity';
 import { type SendMessageResult } from 'src/modules/messaging/message-outbound-manager/types/send-message-result.type';
 
@@ -11,4 +13,5 @@ export type PersistSentMessageInput = {
   inReplyTo?: string;
   parentThreadExternalId?: string;
   workspaceId: string;
+  files?: EmailAttachment[];
 };

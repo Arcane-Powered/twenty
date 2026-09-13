@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { EmailThreadMessageAttachments } from '@/activities/emails/components/EmailThreadMessageAttachments';
 import { EmailThreadMessageBody } from '@/activities/emails/components/EmailThreadMessageBody';
 import { EmailThreadMessageBodyPreview } from '@/activities/emails/components/EmailThreadMessageBodyPreview';
 import { EmailThreadMessageLayout } from '@/activities/emails/components/EmailThreadMessageLayout';
@@ -109,7 +110,10 @@ export const EmailThreadMessage = ({
       ) : isDraft || !isOpen ? (
         <EmailThreadMessageBodyPreview body={message.text} />
       ) : (
-        <EmailThreadMessageBody body={message.text} isDisplayed />
+        <>
+          <EmailThreadMessageBody body={message.text} isDisplayed />
+          <EmailThreadMessageAttachments files={message.files ?? []} />
+        </>
       )}
     </EmailThreadMessageLayout>
   );

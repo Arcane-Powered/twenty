@@ -103,4 +103,20 @@ describe('formatSentMessage', () => {
     expect(message.attachments).toEqual([]);
     expect(message.messageFolderIds).toBeUndefined();
   });
+
+  it('should carry the sent attachments as message files', () => {
+    const message = formatSentMessage(buildInput(), [
+      { fileId: 'file-1', label: 'contract.pdf' },
+    ]);
+
+    expect(message.files).toEqual([
+      { fileId: 'file-1', label: 'contract.pdf' },
+    ]);
+  });
+
+  it('should leave files unset when the message was sent without attachment', () => {
+    const message = formatSentMessage(buildInput());
+
+    expect(message.files).toBeUndefined();
+  });
 });

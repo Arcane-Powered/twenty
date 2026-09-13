@@ -480,4 +480,31 @@ export const buildMessageStandardFlatFieldMetadatas = ({
     twentyStandardApplicationId,
     now,
   }),
+  files: createStandardFieldFlatMetadata({
+    objectName,
+    workspaceId,
+    context: {
+      fieldName: 'files',
+      type: FieldMetadataType.FILES,
+      label: i18nLabel(
+        msg({ message: `Attachments`, context: 'fieldMetadata.label' }),
+      ),
+      description: i18nLabel(
+        msg({
+          message: `Files attached to this message`,
+          context: 'fieldMetadata.description',
+        }),
+      ),
+      icon: 'IconPaperclip',
+      isNullable: true,
+      isUIEditable: false,
+      settings: {
+        maxNumberOfValues: 20,
+      },
+    },
+    standardObjectMetadataRelatedEntityIds,
+    dependencyFlatEntityMaps,
+    twentyStandardApplicationId,
+    now,
+  }),
 });

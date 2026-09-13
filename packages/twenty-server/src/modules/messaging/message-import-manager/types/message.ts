@@ -1,3 +1,4 @@
+import { type FileInput } from 'src/engine/api/common/common-args-processors/data-arg-processor/types/file-item.type';
 import { type MessageDirection } from 'src/modules/messaging/common/enums/message-direction.enum';
 import { type MessageParticipantWorkspaceEntity } from 'src/modules/messaging/common/standard-objects/message-participant.workspace-entity';
 import { type MessageWorkspaceEntity } from 'src/modules/messaging/common/standard-objects/message.workspace-entity';
@@ -15,10 +16,12 @@ export type Message = Omit<
   | 'id'
   | 'messageCampaign'
   | 'messageCampaignId'
+  | 'files'
 > & {
   attachments: {
     filename: string;
   }[];
+  files?: FileInput[];
   externalId: string;
   messageThreadExternalId: string;
   direction: MessageDirection;

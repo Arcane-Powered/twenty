@@ -428,6 +428,7 @@ export class EmailComposerService {
         plainTextBody,
         sanitizedHtmlBody,
         attachments,
+        files: files ?? [],
         connectedAccount,
         fromHandle,
         messageChannelId: messageChannel?.id,

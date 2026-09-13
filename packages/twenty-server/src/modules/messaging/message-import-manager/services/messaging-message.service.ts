@@ -4,6 +4,7 @@ import { isDefined } from 'twenty-shared/utils';
 import { In } from 'typeorm';
 import { v4 } from 'uuid';
 
+import { type FileInput } from 'src/engine/api/common/common-args-processors/data-arg-processor/types/file-item.type';
 import { WorkspaceOrmManager } from 'src/engine/twenty-orm/workspace-orm.manager';
 import { type WorkspaceTransactionScope } from 'src/engine/twenty-orm/types/workspace-transaction-scope.type';
 import { buildSystemAuthContext } from 'src/engine/twenty-orm/utils/build-system-auth-context.util';
@@ -12,20 +13,22 @@ import { type MessageThreadWorkspaceEntity } from 'src/modules/messaging/common/
 import { type MessageWorkspaceEntity } from 'src/modules/messaging/common/standard-objects/message.workspace-entity';
 import { type MessageWithParticipants } from 'src/modules/messaging/message-import-manager/types/message';
 
+type MessageToCreate = Pick<
+  MessageWorkspaceEntity,
+  | 'id'
+  | 'headerMessageId'
+  | 'subject'
+  | 'receivedAt'
+  | 'text'
+  | 'messageThreadId'
+  | 'isDraft'
+> & { files?: FileInput[] };
+
 type MessageAccumulator = {
   existingMessageInDB?: MessageWorkspaceEntity;
   existingThreadInDB?: Pick<MessageThreadWorkspaceEntity, 'id'>;
   existingMessageChannelMessageAssociationInDB?: MessageChannelMessageAssociationWorkspaceEntity;
-  messageToCreate?: Pick<
-    MessageWorkspaceEntity,
-    | 'id'
-    | 'headerMessageId'
-    | 'subject'
-    | 'receivedAt'
-    | 'text'
-    | 'messageThreadId'
-    | 'isDraft'
-  >;
+  messageToCreate?: MessageToCreate;
   threadToCreate?: Pick<MessageThreadWorkspaceEntity, 'id' | 'subject'>;
   messageChannelMessageAssociationToCreate?: Pick<
     MessageChannelMessageAssociationWorkspaceEntity,
@@ -49,7 +52,7 @@ export class MessagingMessageService {
     transactionScope: WorkspaceTransactionScope,
     workspaceId: string,
   ): Promise<{
-    createdMessages: Partial<MessageWorkspaceEntity>[];
+    createdMessages: MessageToCreate[];
     messageExternalIdsAndIdsMap: Map<string, string>;
     messageExternalIdToMessageChannelMessageAssociationIdMap: Map<
       string,
@@ -168,6 +171,7 @@ export class MessagingMessageService {
               text: message.text,
               messageThreadId,
               isDraft: message.isDraft,
+              ...(isDefined(message.files) ? { files: message.files } : {}),
             };
 
             messageAccumulator.messageToCreate = messageToCreate;
