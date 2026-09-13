@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 export const UPDATE_EMAIL_ASSISTANT_SETTINGS = gql`
   mutation UpdateEmailAssistantSettings($input: UpdateWorkspaceInput!) {
-    updateWorkspace(input: $input) {
+    updateWorkspace(data: $input) {
       id
       aiEmailInstructions
       aiEmailTone
