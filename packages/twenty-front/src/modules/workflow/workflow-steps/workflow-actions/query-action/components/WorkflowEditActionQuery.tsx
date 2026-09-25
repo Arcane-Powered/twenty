@@ -1,5 +1,6 @@
 import { FormRawJsonFieldInput } from '@/object-record/record-field/ui/form-types/components/FormRawJsonFieldInput';
 import { type WorkflowQueryAction } from '@/workflow/types/Workflow';
+import { InputLabel } from '@/ui/input/components/internal/InputLabel/InputLabel';
 import { WorkflowStepBody } from '@/workflow/workflow-steps/components/WorkflowStepBody';
 import { WORKFLOW_QUERY_MODEL_URI } from '@/workflow/workflow-steps/workflow-actions/query-action/constants/WorkflowQueryModelUri';
 import { useMonacoGraphqlSchema } from '@/workflow/workflow-steps/workflow-actions/query-action/hooks/useMonacoGraphqlSchema';
@@ -14,8 +15,8 @@ import { useLingui } from '@lingui/react/macro';
 import { type Monaco } from '@monaco-editor/react';
 import { type editor } from 'monaco-editor';
 import { useEffect } from 'react';
-import { CodeEditor, InputLabel } from 'twenty-ui/input';
-import { themeCssVariables } from 'twenty-ui/theme-constants';
+import { CodeEditor } from 'twenty-ui/components/code-editor';
+import { themeCssVariables } from 'twenty-ui/theme';
 
 const QUERY_EDITOR_HEIGHT = 320;
 

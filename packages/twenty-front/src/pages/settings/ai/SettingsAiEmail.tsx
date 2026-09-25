@@ -15,10 +15,9 @@ import {
   IconSparkles,
   IconTextSize,
 } from 'twenty-ui/icon';
-import { Section } from 'twenty-ui/layout';
-import { Card } from 'twenty-ui/surfaces';
-import { themeCssVariables } from 'twenty-ui/theme-constants';
-import { H2Title } from 'twenty-ui/typography';
+import { Section, useToast } from 'twenty-ui/components';
+import { Card } from 'twenty-ui/primitives/surfaces';
+import { themeCssVariables } from 'twenty-ui/theme';
 import { useDebouncedCallback } from 'use-debounce';
 
 import { FormAdvancedTextFieldInput } from '@/advanced-text-editor/components/FormAdvancedTextFieldInput';
@@ -29,7 +28,6 @@ import { SettingsOptionCardContentSelect } from '@/settings/components/SettingsO
 import { SettingsOptionCardContentSwitch } from '@/settings/components/SettingsOptions/SettingsOptionCardContentSwitch';
 import { SettingsPageLayout } from '@/settings/components/layout/SettingsPageLayout';
 import { UPDATE_EMAIL_ASSISTANT_SETTINGS } from '@/settings/ai/graphql/mutations/updateEmailAssistantSettings';
-import { useSnackBar } from '@/ui/feedback/snack-bar-manager/hooks/useSnackBar';
 import { Select } from '@/ui/input/components/Select';
 import { useAtomState } from '@/ui/utilities/state/jotai/hooks/useAtomState';
 
@@ -48,7 +46,7 @@ type EmailAssistantSettingsInput = {
 };
 
 export const SettingsAiEmail = () => {
-  const { enqueueErrorSnackBar } = useSnackBar();
+  const { enqueueToast } = useToast();
   const [currentWorkspace, setCurrentWorkspace] = useAtomState(
     currentWorkspaceState,
   );
@@ -72,8 +70,9 @@ export const SettingsAiEmail = () => {
       await updateEmailAssistantSettings({ variables: { input } });
     } catch {
       setCurrentWorkspace(previousWorkspace);
-      enqueueErrorSnackBar({
-        message: t`Failed to save the email assistant settings`,
+      enqueueToast({
+        variant: 'error',
+        children: t`Failed to save the email assistant settings`,
       });
     }
   };
@@ -96,8 +95,8 @@ export const SettingsAiEmail = () => {
       ]}
     >
       <SettingsPageContainer>
-        <Section>
-          <H2Title
+        <Section.Root>
+          <Section.Header
             title={t`Context`}
             description={t`Added to every thread summary and to every draft the assistant writes.`}
           />
@@ -120,10 +119,10 @@ export const SettingsAiEmail = () => {
               minHeight={150}
             />
           </StyledFormContainer>
-        </Section>
+        </Section.Root>
 
-        <Section>
-          <H2Title
+        <Section.Root>
+          <Section.Header
             title={t`Writing style`}
             description={t`Defaults for generated drafts. They can be changed message by message.`}
           />
@@ -190,10 +189,10 @@ export const SettingsAiEmail = () => {
               />
             </SettingsOptionCardContentSelect>
           </Card>
-        </Section>
+        </Section.Root>
 
-        <Section>
-          <H2Title
+        <Section.Root>
+          <Section.Header
             title={t`Behaviour`}
             description={t`When the assistant steps in on its own.`}
           />
@@ -208,7 +207,7 @@ export const SettingsAiEmail = () => {
               }
             />
           </Card>
-        </Section>
+        </Section.Root>
       </SettingsPageContainer>
     </SettingsPageLayout>
   );

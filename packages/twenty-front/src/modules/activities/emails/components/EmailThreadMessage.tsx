@@ -74,14 +74,15 @@ export const EmailThreadMessage = ({
       actions={
         canReply ? (
           <LightIconButton
-            Icon={IconArrowBackUp}
-            accent="tertiary"
+            emphasis="subtle"
             aria-label={t`Reply`}
             onClick={(event) => {
               event.stopPropagation();
               onReplyClick();
             }}
-          />
+          >
+            <IconArrowBackUp />
+          </LightIconButton>
         ) : undefined
       }
       header={

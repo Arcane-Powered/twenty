@@ -4,8 +4,8 @@ import { useCallback, useState } from 'react';
 import { type EmailAssistantTone } from 'twenty-shared/ai';
 import { isDefined, tipTapDocumentToMarkdown } from 'twenty-shared/utils';
 import { IconCheck, IconEye, IconSparkles, IconTextSize } from 'twenty-ui/icon';
-import { Button } from 'twenty-ui/input';
-import { themeCssVariables } from 'twenty-ui/theme-constants';
+import { Button } from 'twenty-ui/primitives/input';
+import { themeCssVariables } from 'twenty-ui/theme';
 
 import { EmailComposerAiSuggestion } from '@/activities/emails/ai/components/EmailComposerAiSuggestion';
 import { useEmailDraftAssistant } from '@/activities/emails/ai/hooks/useEmailDraftAssistant';
@@ -124,35 +124,40 @@ export const EmailComposerAiToolbar = ({
       <StyledActions>
         {canReply && (
           <Button
-            title={t`Draft a reply`}
-            Icon={IconSparkles}
-            size="small"
-            accent="blue"
+            startIcon={<IconSparkles />}
+            size="sm"
             disabled={loading}
             onClick={() => requestSuggestion({ mode: 'reply' })}
-          />
+            variant="solid"
+            color="accent"
+          >
+            {t`Draft a reply`}
+          </Button>
         )}
         <Button
-          title={t`Fix grammar`}
-          Icon={IconCheck}
-          size="small"
+          startIcon={<IconCheck />}
+          size="sm"
           disabled={loading || !hasBody}
           onClick={() => requestSuggestion({ mode: 'fixGrammar' })}
-        />
+        >
+          {t`Fix grammar`}
+        </Button>
         <Button
-          title={t`Review`}
-          Icon={IconEye}
-          size="small"
+          startIcon={<IconEye />}
+          size="sm"
           disabled={loading || !hasBody}
           onClick={() => requestSuggestion({ mode: 'review' })}
-        />
+        >
+          {t`Review`}
+        </Button>
         <Button
-          title={t`Shorten`}
-          Icon={IconTextSize}
-          size="small"
+          startIcon={<IconTextSize />}
+          size="sm"
           disabled={loading || !hasBody}
           onClick={() => requestSuggestion({ mode: 'shorten' })}
-        />
+        >
+          {t`Shorten`}
+        </Button>
         <Select<EmailAssistantTone | 'default'>
           dropdownId="email-composer-ai-tone"
           selectSizeVariant="small"

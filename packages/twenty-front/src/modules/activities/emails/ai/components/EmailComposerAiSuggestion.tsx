@@ -1,8 +1,9 @@
 import { styled } from '@linaria/react';
 import { t } from '@lingui/core/macro';
 import { IconRefresh, IconSparkles, IconX } from 'twenty-ui/icon';
-import { Button, LightIconButton } from 'twenty-ui/input';
-import { themeCssVariables } from 'twenty-ui/theme-constants';
+import { LightIconButton } from 'twenty-ui/components';
+import { Button } from 'twenty-ui/primitives/input';
+import { themeCssVariables } from 'twenty-ui/theme';
 
 import { type EmailDraftSuggestion } from '@/activities/emails/ai/types/EmailDraftSuggestion';
 
@@ -87,11 +88,12 @@ export const EmailComposerAiSuggestion = ({
         </StyledHeaderTitle>
         <StyledHint>{t`Nothing is sent`}</StyledHint>
         <LightIconButton
-          Icon={IconX}
-          accent="tertiary"
+          emphasis="subtle"
           onClick={onDismiss}
           aria-label={t`Dismiss the suggestion`}
-        />
+        >
+          <IconX />
+        </LightIconButton>
       </StyledHeader>
       {isReview ? (
         suggestion.comments.length > 0 ? (
@@ -108,25 +110,29 @@ export const EmailComposerAiSuggestion = ({
           <StyledBody>{suggestion.body}</StyledBody>
           <StyledActions>
             <Button
-              title={t`Replace`}
-              size="small"
-              accent="blue"
+              size="sm"
               disabled={isLoading}
               onClick={() => onReplaceBody(suggestion.body)}
-            />
+              variant="solid"
+              color="accent"
+            >
+              {t`Replace`}
+            </Button>
             <Button
-              title={t`Insert below`}
-              size="small"
+              size="sm"
               disabled={isLoading}
               onClick={() => onAppendBody(suggestion.body)}
-            />
+            >
+              {t`Insert below`}
+            </Button>
             <Button
-              title={t`Regenerate`}
-              Icon={IconRefresh}
-              size="small"
+              startIcon={<IconRefresh />}
+              size="sm"
               disabled={isLoading}
               onClick={onRegenerate}
-            />
+            >
+              {t`Regenerate`}
+            </Button>
           </StyledActions>
         </>
       )}

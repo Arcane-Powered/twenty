@@ -3,8 +3,9 @@ import { t } from '@lingui/core/macro';
 import { useEffect, useState } from 'react';
 import { isDefined } from 'twenty-shared/utils';
 import { IconRefresh, IconSparkles, IconX } from 'twenty-ui/icon';
-import { Button, LightIconButton } from 'twenty-ui/input';
-import { themeCssVariables } from 'twenty-ui/theme-constants';
+import { LightIconButton } from 'twenty-ui/components';
+import { Button } from 'twenty-ui/primitives/input';
+import { themeCssVariables } from 'twenty-ui/theme';
 
 import { EmailThreadAiSummaryContent } from '@/activities/emails/ai/components/EmailThreadAiSummaryContent';
 import { useEmailThreadSummary } from '@/activities/emails/ai/hooks/useEmailThreadSummary';
@@ -110,19 +111,21 @@ export const EmailThreadAiPanel = ({
         <StyledTitle>{t`Assistant`}</StyledTitle>
         {hasSummary && (
           <LightIconButton
-            Icon={IconRefresh}
-            accent="tertiary"
+            emphasis="subtle"
             disabled={loading}
             onClick={generateSummary}
             aria-label={t`Regenerate the summary`}
-          />
+          >
+            <IconRefresh />
+          </LightIconButton>
         )}
         <LightIconButton
-          Icon={IconX}
-          accent="tertiary"
+          emphasis="subtle"
           onClick={onClose}
           aria-label={t`Close the assistant`}
-        />
+        >
+          <IconX />
+        </LightIconButton>
       </StyledHeader>
       <StyledBody>
         {loading && <ShimmeringText>{t`Reading the thread…`}</ShimmeringText>}
@@ -130,11 +133,12 @@ export const EmailThreadAiPanel = ({
           <StyledEmptyState>
             <StyledPlaceholder>{errorMessage}</StyledPlaceholder>
             <Button
-              title={t`Try again`}
-              Icon={IconRefresh}
-              size="small"
+              startIcon={<IconRefresh />}
+              size="sm"
               onClick={generateSummary}
-            />
+            >
+              {t`Try again`}
+            </Button>
           </StyledEmptyState>
         )}
         {!loading && !isDefined(errorMessage) && !hasSummary && (
@@ -143,12 +147,14 @@ export const EmailThreadAiPanel = ({
               {t`Get the thread in a few lines, with what is expected from you.`}
             </StyledPlaceholder>
             <Button
-              title={t`Summarize this thread`}
-              Icon={IconSparkles}
-              size="small"
-              accent="blue"
+              startIcon={<IconSparkles />}
+              size="sm"
               onClick={generateSummary}
-            />
+              variant="solid"
+              color="accent"
+            >
+              {t`Summarize this thread`}
+            </Button>
           </StyledEmptyState>
         )}
         {!loading && hasSummary && (
