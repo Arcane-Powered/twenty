@@ -11,9 +11,9 @@
 # after the `twenty` stage. Keep it that way: when the upstream Dockerfile
 # changes, re-derive this file rather than editing it in place.
 #
-#   sed -n '1,187p' packages/twenty-docker/twenty/Dockerfile
+#   sed -n '1,191p' packages/twenty-docker/twenty/Dockerfile
 #
-# (187 = the last line of the `twenty` stage. Re-check that boundary after a
+# (191 = the last line of the `twenty` stage. Re-check that boundary after a
 # rebase; the stages after it — twenty-aws, s6-fetch, twenty-app-dev — are the
 # ones that must not be carried over.)
 # ===========================================================================
@@ -37,7 +37,7 @@ COPY ./packages/twenty-front-component-renderer/package.json /app/packages/twent
 COPY ./packages/twenty-sdk/package.json /app/packages/twenty-sdk/
 COPY ./packages/twenty-client-sdk/package.json /app/packages/twenty-client-sdk/
 
-RUN yarn workspaces focus twenty twenty-front twenty-front-component-renderer twenty-ui twenty-shared twenty-sdk twenty-client-sdk && yarn cache clean && npx nx reset
+RUN yarn workspaces focus twenty-monorepo twenty-front twenty-front-component-renderer twenty-ui twenty-shared twenty-sdk twenty-client-sdk && yarn cache clean && npx nx reset
 
 
 FROM node:24.19.0-alpine3.23@sha256:244cc2b53f46f9e876304391d17682b0ddae9ac33491f4857e25e35a36ba7995 AS server-deps
@@ -53,8 +53,9 @@ COPY ./packages/twenty-server/package.json /app/packages/twenty-server/
 COPY ./packages/twenty-server/patches /app/packages/twenty-server/patches
 COPY ./packages/twenty-shared/package.json /app/packages/twenty-shared/
 COPY ./packages/twenty-client-sdk/package.json /app/packages/twenty-client-sdk/
+COPY ./packages/twenty-oxlint-rules/package.json /app/packages/twenty-oxlint-rules/
 
-RUN yarn workspaces focus twenty twenty-server twenty-emails twenty-shared twenty-client-sdk && yarn cache clean && npx nx reset
+RUN yarn workspaces focus twenty-monorepo twenty-server twenty-emails twenty-shared twenty-client-sdk && yarn cache clean && npx nx reset
 
 
 FROM server-deps AS twenty-server-build
@@ -109,14 +110,15 @@ FROM node:24.19.0-alpine3.23@sha256:244cc2b53f46f9e876304391d17682b0ddae9ac33491
 # Force the patched Alpine OpenSSL libs to the fixed release (3.5.8-r0 clears
 # CVE-2026-14456/14457/18798/54874/63072/63075/63076). Node bundles its own
 # OpenSSL, but psql/curl link these system libs, so the upgrade hardens
-# runtime TLS and clears the scanner.
+# runtime TLS and clears the scanner. libexpat 2.8.5-r0 clears CVE-2026-93990.
 RUN apk add --no-cache \
-    'curl>=8.20.0-r0' \
+    'curl>=8.22.0-r0' \
+    'libexpat>=2.8.5-r0' \
     'nghttp2-libs>=1.69.0-r0' \
     'libcrypto3>=3.5.8-r0' \
     'libssl3>=3.5.8-r0' \
     'postgresql18-client>=18.5-r0' \
-    jq
+    'jq>=1.8.2-r0'
 
 COPY ./packages/twenty-docker/twenty/entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
@@ -205,3 +207,5 @@ FROM twenty-server AS twenty
 COPY --chown=1000 --from=twenty-front-build /app/packages/twenty-front/build /app/packages/twenty-server/dist/front
 
 LABEL org.opencontainers.image.description="Twenty image with backend and frontend."
+
+
