@@ -140,6 +140,11 @@ msgstr "(已选择: {selectedIconKey})"
 msgid "[empty string]"
 msgstr "[空字符串]"
 
+#. js-lingui-id: 7Bs3bA
+#: src/modules/workflow/workflow-steps/workflow-actions/query-action/components/WorkflowEditActionQuery.tsx
+msgid "{ \"companyId\": \"{{trigger.record.id}}\" }"
+msgstr ""
+
 #. js-lingui-id: gJXeRg
 #. placeholder {0}: counts.duplicateEmails
 #. placeholder {1}: formatNumber(counts.duplicateEmails)
@@ -581,10 +586,15 @@ msgstr "{label} 列表"
 msgid "{memberCount, plural, one {{memberCount} member} other {{memberCount} members}}"
 msgstr "{memberCount, plural, one {{memberCount} 名成员} other {{memberCount} 名成员}}"
 
-#. js-lingui-id: Y32cMj
+#. js-lingui-id: Or6JVA
+#: src/modules/page-layout/widgets/email-thread/components/EmailThreadWidget.tsx
+msgid "{messagesCount} messages"
+msgstr ""
+
+#. js-lingui-id: P/aNO7
 #: src/modules/page-layout/widgets/email-thread/components/EmailThreadIntermediaryMessages.tsx
-msgid "{messagesLength} emails"
-msgstr "{messagesLength} 封邮件"
+msgid "{messagesLength, plural, one {hidden message} other {hidden messages}}"
+msgstr ""
 
 #. js-lingui-id: Pfatg8
 #: src/modules/page-layout/widgets/call-recording-transcript/components/CallRecordingAudioPlayer.tsx
@@ -1827,6 +1837,11 @@ msgstr "已添加 {beautifiedCreatedAt}"
 msgid "Added to blocklist"
 msgstr "已添加到拦截列表"
 
+#. js-lingui-id: aXsGqY
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Added to every thread summary and to every draft the assistant writes."
+msgstr ""
+
 #. js-lingui-id: hW/fMg
 #: src/modules/object-metadata/hooks/useSortSubFieldChoicesForField.ts
 #: src/modules/object-record/record-field/ui/form-types/components/FormAddressFieldInput.tsx
@@ -2055,6 +2070,8 @@ msgstr ""
 #: src/pages/settings/ai/SettingsAgentTurnDetail.tsx
 #: src/pages/settings/ai/SettingsAI.tsx
 #: src/pages/settings/ai/SettingsAI.tsx
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 #: src/pages/settings/ai/SettingsAiPrompts.tsx
 #: src/pages/settings/ai/SettingsAiUsageUserDetail.tsx
 #: src/pages/settings/ai/SettingsToolDetail.tsx
@@ -3100,6 +3117,11 @@ msgstr "询问 AI"
 msgid "Ask anything, @ a record or / a skill..."
 msgstr "询问任何问题，使用 @ 提及记录或使用 / 调用技能……"
 
+#. js-lingui-id: +UeMhC
+#: src/modules/activities/emails/ai/components/EmailComposerAiToolbar.tsx
+msgid "Ask the assistant to write or change something…"
+msgstr ""
+
 #. js-lingui-id: QVL/hg
 #: src/modules/ai/components/AiChatQuestionStatusRenderer.tsx
 msgid "Asking questions..."
@@ -3166,8 +3188,15 @@ msgid "Assignment"
 msgstr "分配"
 
 #. js-lingui-id: d/bvvp
+#: src/modules/activities/emails/ai/components/EmailThreadAiPanel.tsx
+#: src/modules/page-layout/widgets/email-thread/components/EmailThreadWidget.tsx
 #: src/pages/settings/ai/SettingsAgentTurnDetail.tsx
 msgid "Assistant"
+msgstr ""
+
+#. js-lingui-id: zgFQmE
+#: src/modules/activities/emails/ai/components/EmailComposerAiSuggestion.tsx
+msgid "Assistant suggestion"
 msgstr ""
 
 #. js-lingui-id: 4H6WHS
@@ -3495,6 +3524,7 @@ msgstr "均衡依据"
 
 #. js-lingui-id: kJygHz
 #: src/modules/ai/utils/getAiModelTierLabel.ts
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 msgid "Balanced"
 msgstr "均衡"
 
@@ -3535,6 +3565,11 @@ msgstr "密件抄送"
 #: src/modules/workflow/workflow-steps/workflow-actions/form-action/components/WorkflowEditActionFormBuilder.tsx
 msgid "Because this workflow is not using a manual trigger, the form will not open on top of the interface. To fill it, open the corresponding workflow run and complete the form there."
 msgstr "由于此工作流未使用手动触发器，表单不会在界面上方打开。要填写该表单，请打开相应的工作流运行并在其中完成表单。"
+
+#. js-lingui-id: PnX/UF
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Behaviour"
+msgstr ""
 
 #. js-lingui-id: +MqoSu
 #: src/modules/settings/admin-panel/health-status/components/SettingsAdminWorkspacesStatusSummaryCard.tsx
@@ -4312,6 +4347,11 @@ msgstr "将主题更改为浅色"
 msgid "Change theme to system"
 msgstr "将主题更改为系统"
 
+#. js-lingui-id: UJXHES
+#: src/modules/activities/emails/ai/components/EmailComposerAiToolbar.tsx
+msgid "Change tone"
+msgstr ""
+
 #. js-lingui-id: lfFsZ4
 #: src/modules/settings/workspace/components/SettingsWorkspaceEmailGroupSection.tsx
 msgid "Channels"
@@ -4755,6 +4795,11 @@ msgstr "关闭预览"
 msgid "Close side panel"
 msgstr "关闭侧边栏"
 
+#. js-lingui-id: pamhqR
+#: src/modules/activities/emails/ai/components/EmailThreadAiPanel.tsx
+msgid "Close the assistant"
+msgstr ""
+
 #. js-lingui-id: H4meUz
 #: src/modules/settings/components/SettingsCustomizeVideoModal.tsx
 msgid "Close video"
@@ -5033,6 +5078,11 @@ msgstr "撰写电子邮件"
 #: src/modules/settings/admin-panel/health-status/components/SettingsAdminWorkspacesStatusSummaryCard.tsx
 msgid "Computed at"
 msgstr "计算时间"
+
+#. js-lingui-id: AzFAXz
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Concise"
+msgstr ""
 
 #. js-lingui-id: PLbVix
 #: src/pages/settings/applications/tabs/SettingsApplicationCommandMenuItemSettingsTab.tsx
@@ -5391,8 +5441,14 @@ msgstr "内容"
 #: src/modules/ai/components/RoutingDebugDisplay.tsx
 #: src/modules/settings/ai/components/SettingsAiModelHoverCard.tsx
 #: src/modules/workflow/workflow-steps/workflow-actions/classify-action/components/WorkflowEditActionClassify.tsx
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 msgid "Context"
 msgstr "上下文"
+
+#. js-lingui-id: LEIRm/
+#: src/pages/settings/ai/components/SettingsAiOverviewTab.tsx
+msgid "Context and defaults used to summarize threads and write replies"
+msgstr ""
 
 #. js-lingui-id: /vXJ9Y
 #: src/modules/ai/components/internal/AiChatContextUsageButton.tsx
@@ -6940,6 +6996,11 @@ msgstr "默认值"
 msgid "Default View"
 msgstr "默认视图"
 
+#. js-lingui-id: fycXkW
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Defaults for generated drafts. They can be changed message by message."
+msgstr ""
+
 #. js-lingui-id: 6b8WDd
 #: src/modules/settings/admin-panel/constants/SettingsAdminFeatureFlagMetadata.ts
 msgid "Deferred workspace migration actions"
@@ -7437,6 +7498,11 @@ msgstr "取消关联"
 msgid "Detail per workspace"
 msgstr "每个工作区的详细信息"
 
+#. js-lingui-id: tUVwfQ
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Detailed"
+msgstr ""
+
 #. js-lingui-id: URmyfc
 #: src/modules/ai/components/RoutingDebugDisplay.tsx
 #: src/modules/settings/event-logs/utils/getColumnsForEventLogTable.tsx
@@ -7503,6 +7569,12 @@ msgstr "听写失败。请重试。"
 msgid "Dictation is not supported in this browser."
 msgstr "此浏览器不支持听写功能。"
 
+#. js-lingui-id: fYUNRJ
+#: src/modules/activities/emails/ai/components/EmailComposerAiToolbar.tsx
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Direct"
+msgstr ""
+
 #. js-lingui-id: 8n9Unw
 #: src/modules/settings/admin-panel/constants/SettingsAdminFeatureFlagMetadata.ts
 msgid "Direct REST metadata responses"
@@ -7562,6 +7634,11 @@ msgstr "在 {defaultDomain} 上可被发现"
 #: src/modules/settings/emailing-domains/components/SettingsEmailingDomainAiSetup.tsx
 msgid "Dismiss AI setup prompt"
 msgstr "关闭 AI 设置提示"
+
+#. js-lingui-id: pMUjjS
+#: src/modules/activities/emails/ai/components/EmailComposerAiSuggestion.tsx
+msgid "Dismiss the suggestion"
+msgstr ""
 
 #. js-lingui-id: Ldgs6e
 #: src/modules/side-panel/pages/page-layout/components/record-page/SidePanelRecordPageFieldsSettings.tsx
@@ -7778,6 +7855,11 @@ msgstr "下载示例文件"
 msgid "Draft"
 msgstr "草稿"
 
+#. js-lingui-id: DoQmbF
+#: src/modules/activities/emails/ai/components/EmailComposerAiToolbar.tsx
+msgid "Draft a reply"
+msgstr ""
+
 #. js-lingui-id: 1qZ7C3
 #: src/modules/ai/components/suggested-prompts/contextual-suggested-prompts.ts
 msgid "Draft an email"
@@ -7853,6 +7935,7 @@ msgstr "持续时间"
 
 #. js-lingui-id: KIjvtr
 #: src/localization/hooks/useLocaleOptions.ts
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 msgid "Dutch"
 msgstr "荷兰语"
 
@@ -7927,6 +8010,11 @@ msgstr "例如：OpenAI EU"
 #: src/pages/settings/ai/components/SettingsAiOverviewTab.tsx
 msgid "E.g., \"We are a B2B SaaS company. Always use formal language...\""
 msgstr "例如，\"我们是一家 B2B SaaS 公司。始终使用正式语言...\""
+
+#. js-lingui-id: 6l6HCS
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "E.g., \"We sell to RevOps teams. Never promise a discount above 15%.\""
+msgstr ""
 
 #. js-lingui-id: GhTFTJ
 #: src/modules/workflow/workflow-steps/workflow-actions/ai-agent-action/components/WorkflowOutputSchemaBuilder.tsx
@@ -8209,6 +8297,11 @@ msgstr "将不再接收营销活动电子邮件的电子邮件地址"
 msgid "Email and Chat"
 msgstr "电子邮件和聊天"
 
+#. js-lingui-id: e1mwzp
+#: src/pages/settings/ai/components/SettingsAiOverviewTab.tsx
+msgid "Email assistant"
+msgstr ""
+
 #. js-lingui-id: snb/bC
 #: src/modules/settings/admin-panel/constants/SettingsAdminFeatureFlagMetadata.ts
 msgid "Email campaigns"
@@ -8322,6 +8415,9 @@ msgstr "电子邮件"
 #: src/modules/settings/hooks/useSettingsNavigationItems.tsx
 #: src/pages/settings/accounts/SettingsAccountsEmails.tsx
 #: src/pages/settings/accounts/SettingsAccountsEmails.tsx
+#: src/pages/settings/ai/components/SettingsAiOverviewTab.tsx
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 #: src/pages/settings/communications/SettingsWorkspaceCommunications.tsx
 msgid "Emails"
 msgstr "电子邮件"
@@ -8511,6 +8607,7 @@ msgstr "工程师"
 
 #. js-lingui-id: lYGfRP
 #: src/localization/hooks/useLocaleOptions.ts
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 msgid "English"
 msgstr "英语"
 
@@ -9672,6 +9769,11 @@ msgstr "无法保存应用设置。"
 msgid "Failed to save the campaign"
 msgstr "保存活动失败"
 
+#. js-lingui-id: 6h7nt7
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Failed to save the email assistant settings"
+msgstr ""
+
 #. js-lingui-id: 9ryUyP
 #: src/pages/settings/ai/components/SettingsAiOverviewTab.tsx
 msgid "Failed to save workspace instructions"
@@ -10223,6 +10325,11 @@ msgstr "名不能为空"
 msgid "Fit view"
 msgstr "适应视图"
 
+#. js-lingui-id: mri+GH
+#: src/modules/activities/emails/ai/components/EmailComposerAiToolbar.tsx
+msgid "Fix grammar"
+msgstr ""
+
 #. js-lingui-id: tVgANq
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 msgid "Fix the payment issue to keep your premium features active."
@@ -10388,8 +10495,15 @@ msgstr "每位用户的免费积分"
 
 #. js-lingui-id: nLC6tu
 #: src/localization/hooks/useLocaleOptions.ts
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 msgid "French"
 msgstr "法语"
+
+#. js-lingui-id: Gq7H1m
+#: src/modules/activities/emails/ai/components/EmailComposerAiToolbar.tsx
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Friendly"
+msgstr ""
 
 #. js-lingui-id: ejVYRQ
 #: src/modules/activities/emails/components/CampaignDetailsFields.tsx
@@ -10595,6 +10709,12 @@ msgstr "生成 DPA"
 msgid "Generate Function Output"
 msgstr "生成函数输出"
 
+#. js-lingui-id: +kgXtD
+#. placeholder {0}: beautifyPastDateRelativeToNow( summary.generatedAt, localeCatalog, )
+#: src/modules/activities/emails/ai/components/EmailThreadAiPanel.tsx
+msgid "Generated {0}"
+msgstr ""
+
 #. js-lingui-id: wu9eMO
 #: src/modules/ai/components/CodeExecutionDisplay.tsx
 msgid "Generated Files"
@@ -10607,6 +10727,7 @@ msgstr "根据帐户生成 Google Meet 或 Microsoft Teams 链接。"
 
 #. js-lingui-id: DDcvSo
 #: src/localization/hooks/useLocaleOptions.ts
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 msgid "German"
 msgstr "德语"
 
@@ -10647,6 +10768,11 @@ msgstr "通过安装一些应用，充分发挥 CRM 的价值"
 #: src/pages/onboarding/InviteTeam.tsx
 msgid "Get the most out of your workspace by inviting your team."
 msgstr "邀请您的团队，充分利用您的工作区。"
+
+#. js-lingui-id: 3EDScE
+#: src/modules/activities/emails/ai/components/EmailThreadAiPanel.tsx
+msgid "Get the thread in a few lines, with what is expected from you."
+msgstr ""
 
 #. js-lingui-id: XXtAx5
 #: src/modules/settings/data-model/indexes/forms/components/SettingsObjectIndexOptionsForm.tsx
@@ -11138,6 +11264,11 @@ msgstr "触发之间的小时数"
 msgid "How credits work"
 msgstr "积分如何运作"
 
+#. js-lingui-id: b2DfyV
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "How long a generated reply should be."
+msgstr ""
+
 #. js-lingui-id: nHmYga
 #: src/modules/settings/billing/components/SettingsBillingLimitForm.tsx
 msgid "How much can be spent, and how often it resets."
@@ -11147,6 +11278,11 @@ msgstr "可支出的金额及其重置频率。"
 #: src/pages/settings/applications/tabs/SettingsApplicationDetailContentTab.tsx
 msgid "How records, pages, and navigation are displayed"
 msgstr "记录、页面和导航的显示方式"
+
+#. js-lingui-id: VkJ2Q6
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "How the assistant addresses your contacts."
+msgstr ""
 
 #. js-lingui-id: e60vNl
 #: src/pages/onboarding/CreateProfile.tsx
@@ -11663,6 +11799,11 @@ msgstr "插入一个 JSON 输入，然后按“运行函数”。"
 msgid "Insert action"
 msgstr "插入操作"
 
+#. js-lingui-id: UF6vwM
+#: src/modules/activities/emails/ai/components/EmailComposerAiSuggestion.tsx
+msgid "Insert below"
+msgstr ""
+
 #. js-lingui-id: mia08l
 #: src/modules/advanced-text-editor/components/AdvancedTextEditorInsertRail.tsx
 msgid "Insert image"
@@ -12107,6 +12248,7 @@ msgstr "它自带 7 个标准对象。"
 
 #. js-lingui-id: Lj7sBL
 #: src/localization/hooks/useLocaleOptions.ts
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 msgid "Italian"
 msgstr "意大利语"
 
@@ -12265,6 +12407,11 @@ msgstr "密钥 ID 已复制"
 msgid "Key in use on another server"
 msgstr "密钥已在另一台服务器上使用"
 
+#. js-lingui-id: t5iyU3
+#: src/modules/activities/emails/ai/components/EmailThreadAiSummaryContent.tsx
+msgid "Key points"
+msgstr ""
+
 #. js-lingui-id: VOAmkS
 #: src/modules/workflow/workflow-steps/workflow-actions/http-request-action/components/BodyInput.tsx
 msgid "Key/Value"
@@ -12321,6 +12468,7 @@ msgid "Label must contain at least one alphanumeric character"
 msgstr "标签必须至少包含一个字母或数字字符"
 
 #. js-lingui-id: vXIe7J
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 #: src/pages/settings/profile/appearance/components/LocalePicker.tsx
 msgid "Language"
 msgstr "语言"
@@ -12674,6 +12822,11 @@ msgstr "法人实体名称"
 #. js-lingui-id: MP1v+1
 #: src/modules/side-panel/pages/page-layout/constants/settings/ChartConfigurationSettingLabels.ts
 msgid "Legend"
+msgstr ""
+
+#. js-lingui-id: NC2AI2
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Length"
 msgstr ""
 
 #. js-lingui-id: xu7RPQ
@@ -14395,6 +14548,11 @@ msgstr "新闻简报"
 msgid "Next"
 msgstr "下一个"
 
+#. js-lingui-id: NFiDyM
+#: src/modules/activities/emails/ai/components/EmailThreadAiSummaryContent.tsx
+msgid "Next actions"
+msgstr ""
+
 #. js-lingui-id: L0DCk4
 #: src/modules/settings/billing/components/SettingsBillingSubscriptionInfo.tsx
 msgid "Next charge {totalRenewDate}. Invoice amount may vary if you add members or credits between periods"
@@ -15434,6 +15592,16 @@ msgstr "此范围尚未计入任何用量"
 #: src/modules/command-menu-item/engine-command/record/single-record/message-campaign/components/CancelMessageCampaignSingleRecordCommand.tsx
 msgid "Nothing has gone out yet. The campaign returns to your drafts and you can edit or schedule it again."
 msgstr "尚未发送任何内容。营销活动将返回您的草稿，您可以再次编辑或安排发送。"
+
+#. js-lingui-id: Q7+o9N
+#: src/modules/activities/emails/ai/components/EmailComposerAiSuggestion.tsx
+msgid "Nothing is sent"
+msgstr ""
+
+#. js-lingui-id: RwJOl4
+#: src/modules/activities/emails/ai/components/EmailComposerAiSuggestion.tsx
+msgid "Nothing to change, this draft is ready to send."
+msgstr ""
 
 #. js-lingui-id: DYCPYF
 #: src/modules/page-layout/widgets/components/StandaloneWidgetPlaceholder.tsx
@@ -16795,6 +16963,11 @@ msgstr "复数"
 msgid "Polish"
 msgstr "波兰语"
 
+#. js-lingui-id: MOERNx
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Portuguese"
+msgstr ""
+
 #. js-lingui-id: 0nsqwk
 #: src/localization/hooks/useLocaleOptions.ts
 msgid "Portuguese — Brazil"
@@ -17024,6 +17197,12 @@ msgstr "处理中……"
 msgid "profession"
 msgstr "profession"
 
+#. js-lingui-id: Oojfbh
+#: src/modules/activities/emails/ai/components/EmailComposerAiToolbar.tsx
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Professional"
+msgstr ""
+
 #. js-lingui-id: vERlcd
 #: src/modules/settings/hooks/useSettingsNavigationItems.tsx
 #: src/pages/settings/profile/SettingsProfile.tsx
@@ -17156,6 +17335,11 @@ msgstr ""
 msgid "Queries that relied on it will fall back to a sequential scan. You can recreate it later."
 msgstr "依赖该索引的查询将退回到顺序扫描。您可以稍后重新创建它。"
 
+#. js-lingui-id: 0mx5ow
+#: src/modules/workflow/workflow-steps/workflow-actions/query-action/components/WorkflowEditActionQuery.tsx
+msgid "Query"
+msgstr ""
+
 #. js-lingui-id: bfgr/e
 #: src/modules/workflow/workflow-steps/workflow-actions/classify-action/components/WorkflowEditActionClassify.tsx
 msgid "Question"
@@ -17276,6 +17460,11 @@ msgstr "由此应用提供的只读 {entityTypeLabel} 定义"
 #: src/modules/settings/billing/constants/SettingsBillingPlanComparisonRows.ts
 msgid "Read/Edit/Delete permissions"
 msgstr "读取/编辑/删除权限"
+
+#. js-lingui-id: jYm01o
+#: src/modules/activities/emails/ai/components/EmailThreadAiPanel.tsx
+msgid "Reading the thread…"
+msgstr ""
 
 #. js-lingui-id: VJScHU
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceCreditGrantModal.tsx
@@ -17554,6 +17743,11 @@ msgstr "重定向 URI"
 msgid "Refresh status"
 msgstr "刷新状态"
 
+#. js-lingui-id: 6exX+8
+#: src/modules/activities/emails/ai/components/EmailComposerAiSuggestion.tsx
+msgid "Regenerate"
+msgstr ""
+
 #. js-lingui-id: vpZcGd
 #: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeyDetail.tsx
 #: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeyDetail.tsx
@@ -17569,6 +17763,11 @@ msgstr "重新生成密钥"
 #: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeyDetail.tsx
 msgid "Regenerate Key"
 msgstr "重新生成密钥"
+
+#. js-lingui-id: nfsMtq
+#: src/modules/activities/emails/ai/components/EmailThreadAiPanel.tsx
+msgid "Regenerate the summary"
+msgstr ""
 
 #. js-lingui-id: uJ+Ve2
 #: src/pages/settings/admin-panel/SettingsAdminAiProviderDetail.tsx
@@ -17916,6 +18115,11 @@ msgstr "重新排序字段"
 msgid "Reorder options"
 msgstr "调整选项顺序"
 
+#. js-lingui-id: fqSfXY
+#: src/modules/activities/emails/ai/components/EmailComposerAiSuggestion.tsx
+msgid "Replace"
+msgstr ""
+
 #. js-lingui-id: q8Id6J
 #: src/modules/side-panel/pages/page-layout/components/WidgetSettingsManageSection.tsx
 msgid "Replace widget"
@@ -17937,6 +18141,7 @@ msgid "Replit install links require an HTTPS MCP URL."
 msgstr "Replit 安装链接需要使用 HTTPS MCP URL。"
 
 #. js-lingui-id: ImOQa9
+#: src/modules/activities/emails/components/EmailThreadMessage.tsx
 #: src/modules/page-layout/widgets/email-thread/components/EmailThreadComposer.tsx
 #: src/modules/side-panel/hooks/useOpenComposeEmailInSidePanel.ts
 msgid "Reply"
@@ -18213,6 +18418,12 @@ msgstr "返回值"
 msgid "reverse alphabetical"
 msgstr "逆字母顺序"
 
+#. js-lingui-id: 5k0NLb
+#: src/modules/activities/emails/ai/components/EmailComposerAiSuggestion.tsx
+#: src/modules/activities/emails/ai/components/EmailComposerAiToolbar.tsx
+msgid "Review"
+msgstr ""
+
 #. js-lingui-id: GXsAby
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceCreditGrantRowDropdownMenu.tsx
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceCreditGrantsTable.tsx
@@ -18476,6 +18687,11 @@ msgstr "销售"
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceUsageLimitModal.tsx
 msgid "Same as the limit"
 msgstr "与限制相同"
+
+#. js-lingui-id: XT3BOH
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Same as the thread"
+msgstr ""
 
 #. js-lingui-id: QeF0zb
 #: src/modules/side-panel/pages/email-block-settings/components/EmailBoxSidesInput.tsx
@@ -19747,6 +19963,11 @@ msgstr "简短"
 msgid "Short label"
 msgstr "短标签"
 
+#. js-lingui-id: vEVcXG
+#: src/modules/activities/emails/ai/components/EmailComposerAiToolbar.tsx
+msgid "Shorten"
+msgstr ""
+
 #. js-lingui-id: gWk8gY
 #: src/modules/settings/data-model/fields/forms/components/SettingsDataModelFieldIconLabelForm.tsx
 msgid "Should changing a field's label also change the API name?"
@@ -19761,6 +19982,11 @@ msgstr "更改对象标签时是否也应更改 API？"
 #: src/pages/settings/ai/components/SettingsSkillFormContent.tsx
 msgid "Should changing the label also change the API name?"
 msgstr "更改标签是否也要更改 API 名称？"
+
+#. js-lingui-id: 8vETh9
+#: src/modules/page-layout/widgets/email-thread/components/EmailThreadIntermediaryMessages.tsx
+msgid "Show"
+msgstr ""
 
 #. js-lingui-id: vbXZ3k
 #: src/pages/settings/applications/tabs/SettingsApplicationsAvailableTab.tsx
@@ -20184,6 +20410,7 @@ msgstr "空格和逗号"
 
 #. js-lingui-id: 65A04M
 #: src/localization/hooks/useLocaleOptions.ts
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 msgid "Spanish"
 msgstr "西班牙语"
 
@@ -20655,6 +20882,11 @@ msgstr "建议"
 msgid "Sum"
 msgstr "总和"
 
+#. js-lingui-id: iE9YuK
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Summarize long threads on open"
+msgstr ""
+
 #. js-lingui-id: UjjqZc
 #: src/modules/ai/components/suggested-prompts/contextual-suggested-prompts.ts
 msgid "Summarize the records in this view and point out anything that needs attention."
@@ -20669,6 +20901,11 @@ msgstr "总结此记录"
 #: src/modules/ai/components/suggested-prompts/contextual-suggested-prompts.ts
 msgid "Summarize this record and its recent activity."
 msgstr "总结此记录及其最近的活动。"
+
+#. js-lingui-id: Rls0Kv
+#: src/modules/activities/emails/ai/components/EmailThreadAiPanel.tsx
+msgid "Summarize this thread"
+msgstr ""
 
 #. js-lingui-id: uN7gsS
 #: src/modules/ai/components/suggested-prompts/contextual-suggested-prompts.ts
@@ -20988,6 +21225,11 @@ msgstr "测试"
 msgid "Test email sent to {0}"
 msgstr "测试邮件已发送至 {0}"
 
+#. js-lingui-id: HpSBmT
+#: src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerDatabaseEventForm.tsx
+msgid "Test Record"
+msgstr ""
+
 #. js-lingui-id: 3nWPN6
 #: src/modules/settings/logic-functions/components/tabs/SettingsLogicFunctionTestTab.tsx
 msgid "Test your function"
@@ -21039,6 +21281,11 @@ msgstr "工作区用于发送和接收电子邮件的地址（例如：support@m
 #: src/pages/settings/admin-panel/SettingsAdminNewAiProvider.tsx
 msgid "The API endpoint for your OpenAI-compatible provider"
 msgstr "您的 OpenAI 兼容提供商的 API 端点"
+
+#. js-lingui-id: /Xs5/W
+#: src/modules/activities/emails/ai/hooks/useEmailDraftAssistant.ts
+msgid "The assistant could not answer."
+msgstr ""
 
 #. js-lingui-id: qjNojw
 #: src/pages/settings/admin-panel/SettingsAdminNewAiProvider.tsx
@@ -21246,6 +21493,11 @@ msgstr ""
 #: src/pages/settings/communications/SettingsWorkspaceCommunicationGroupChannelDetail.tsx
 msgid "The shared email you want to use."
 msgstr "您想要使用的共享电子邮件地址。"
+
+#. js-lingui-id: rk0LFX
+#: src/modules/activities/emails/ai/hooks/useEmailThreadSummary.ts
+msgid "The summary could not be generated."
+msgstr ""
 
 #. js-lingui-id: 9q0gnf
 #: src/modules/page-layout/widgets/call-recording/utils/getCallRecordingStatusDisplayConfiguration.ts
@@ -21696,6 +21948,11 @@ msgstr "该子域名已被保留"
 msgid "This takes {0} credits back off this workspace straight away. Revoking cannot be undone."
 msgstr "这会立即从此工作区收回 {0} 积分。撤销操作无法恢复。"
 
+#. js-lingui-id: rSXO90
+#: src/modules/activities/emails/ai/hooks/useEmailThreadSummary.ts
+msgid "This thread has no readable message yet."
+msgstr ""
+
 #. js-lingui-id: MMGDfe
 #: src/modules/settings/admin-panel/config-variables/components/ConfigVariableHelpText.tsx
 msgid "This value will be saved to the database."
@@ -21782,6 +22039,11 @@ msgstr "这将收回 {userLabel} 的 {0}。"
 #: src/modules/ai/components/ThinkingStepsDisplay.tsx
 msgid "Thought"
 msgstr "思考"
+
+#. js-lingui-id: 3zYWIb
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Threads with at least three messages are summarized as soon as they open."
+msgstr ""
 
 #. js-lingui-id: pAlfed
 #: src/modules/advanced-text-editor/constants/AdvancedTextEditorBlockCatalog.ts
@@ -21890,6 +22152,11 @@ msgstr "标题"
 msgid "To"
 msgstr "收件人"
 
+#. js-lingui-id: EzyB2j
+#: src/modules/activities/emails/components/EmailThreadMessageReceivers.tsx
+msgid "To {displayedReceivers}"
+msgstr ""
+
 #. js-lingui-id: ecUA8p
 #: src/modules/ai/utils/groupThreadsByDate.ts
 #: src/modules/localization/utils/formatDateISOStringToRelativeDate.ts
@@ -21945,6 +22212,11 @@ msgstr "番茄色"
 #: src/modules/localization/utils/formatDateISOStringToRelativeDate.ts
 msgid "Tomorrow"
 msgstr "明天"
+
+#. js-lingui-id: uAQyzk
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Tone"
+msgstr ""
 
 #. js-lingui-id: 1NhzqT
 #: src/modules/activities/calendar/components/CalendarEventComposerFields.tsx
@@ -22226,6 +22498,7 @@ msgid "True"
 msgstr "真"
 
 #. js-lingui-id: KDw4GX
+#: src/modules/activities/emails/ai/components/EmailThreadAiPanel.tsx
 #: src/modules/object-record/record-sharing/components/RecordSharingDropdownContent.tsx
 #: src/modules/onboarding/components/upgrade-free-trial/ChooseYourPlanErrorState.tsx
 #: src/modules/settings/billing/components/SettingsBillingPlansErrorState.tsx
@@ -23472,6 +23745,7 @@ msgstr "变量未找到"
 #. js-lingui-id: gpmbqk
 #: src/modules/advanced-text-editor/components/AdvancedTextEditorInsertRail.tsx
 #: src/modules/advanced-text-editor/components/AdvancedTextEditorInsertRail.tsx
+#: src/modules/workflow/workflow-steps/workflow-actions/query-action/components/WorkflowEditActionQuery.tsx
 #: src/pages/settings/applications/SettingsApplicationDetails.tsx
 #: src/pages/settings/applications/tabs/SettingsApplicationDetailVariablesTab.tsx
 msgid "Variables"
@@ -23842,6 +24116,12 @@ msgstr "等待权限"
 msgid "Walkthrough"
 msgstr "演练"
 
+#. js-lingui-id: Wtu1aS
+#: src/modules/activities/emails/ai/components/EmailComposerAiToolbar.tsx
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Warm"
+msgstr ""
+
 #. js-lingui-id: r6y+jM
 #: src/modules/ui/feedback/toast/utils/getLocalizedToastProps.ts
 msgid "Warning"
@@ -24180,6 +24460,11 @@ msgstr "应在何时选择此选项？"
 msgid "When the API key will expire."
 msgstr "API 密钥的过期时间。"
 
+#. js-lingui-id: JAype0
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "When the assistant steps in on its own."
+msgstr ""
+
 #. js-lingui-id: leUubq
 #: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeyDetail.tsx
 msgid "When the key will be disabled"
@@ -24207,6 +24492,11 @@ msgstr "此对象记录的打开位置"
 #: src/pages/settings/admin-panel/SettingsAdminNewAiModel.tsx
 msgid "Whether this model supports chain-of-thought reasoning"
 msgstr "此模型是否支持思维链推理"
+
+#. js-lingui-id: Kx4uDN
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Which language drafts are written in."
+msgstr ""
 
 #. js-lingui-id: 9y+sLE
 #: src/modules/workflow/workflow-variables/utils/getWorkflowVariableSpecialItems.ts
@@ -24372,6 +24662,7 @@ msgstr "工作流"
 #: src/pages/settings/ai/SettingsAgentTurnDetail.tsx
 #: src/pages/settings/ai/SettingsAgentTurnDetail.tsx
 #: src/pages/settings/ai/SettingsAI.tsx
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 #: src/pages/settings/ai/SettingsAiPrompts.tsx
 #: src/pages/settings/ai/SettingsAiUsageUserDetail.tsx
 #: src/pages/settings/ai/SettingsToolDetail.tsx
@@ -24555,6 +24846,16 @@ msgstr "为此代理撰写描述"
 #: src/modules/settings/logic-functions/components/tabs/SettingsLogicFunctionCodeEditorTab.tsx
 msgid "Write your function (in typescript) below"
 msgstr "在下方用 TypeScript 编写您的功能"
+
+#. js-lingui-id: dwZANA
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Writing style"
+msgstr ""
+
+#. js-lingui-id: aFPrvZ
+#: src/modules/activities/emails/ai/components/EmailComposerAiToolbar.tsx
+msgid "Writing…"
+msgstr ""
 
 #. js-lingui-id: SHqkdn
 #: src/modules/side-panel/pages/page-layout/constants/ChartSettingsHeadings.ts

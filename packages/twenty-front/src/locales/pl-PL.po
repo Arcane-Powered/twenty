@@ -140,6 +140,11 @@ msgstr "(wybrano: {selectedIconKey})"
 msgid "[empty string]"
 msgstr "[pusty ciąg]"
 
+#. js-lingui-id: 7Bs3bA
+#: src/modules/workflow/workflow-steps/workflow-actions/query-action/components/WorkflowEditActionQuery.tsx
+msgid "{ \"companyId\": \"{{trigger.record.id}}\" }"
+msgstr ""
+
 #. js-lingui-id: gJXeRg
 #. placeholder {0}: counts.duplicateEmails
 #. placeholder {1}: formatNumber(counts.duplicateEmails)
@@ -581,10 +586,15 @@ msgstr "Lista {label}"
 msgid "{memberCount, plural, one {{memberCount} member} other {{memberCount} members}}"
 msgstr "{memberCount, plural, one {{memberCount} członek} few {{memberCount} członków} many {{memberCount} członków} other {{memberCount} członków}}"
 
-#. js-lingui-id: Y32cMj
+#. js-lingui-id: Or6JVA
+#: src/modules/page-layout/widgets/email-thread/components/EmailThreadWidget.tsx
+msgid "{messagesCount} messages"
+msgstr ""
+
+#. js-lingui-id: P/aNO7
 #: src/modules/page-layout/widgets/email-thread/components/EmailThreadIntermediaryMessages.tsx
-msgid "{messagesLength} emails"
-msgstr "{messagesLength} wiadomości e-mail"
+msgid "{messagesLength, plural, one {hidden message} other {hidden messages}}"
+msgstr ""
 
 #. js-lingui-id: Pfatg8
 #: src/modules/page-layout/widgets/call-recording-transcript/components/CallRecordingAudioPlayer.tsx
@@ -1827,6 +1837,11 @@ msgstr "Dodano {beautifiedCreatedAt}"
 msgid "Added to blocklist"
 msgstr "Dodano do listy blokowanych"
 
+#. js-lingui-id: aXsGqY
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Added to every thread summary and to every draft the assistant writes."
+msgstr ""
+
 #. js-lingui-id: hW/fMg
 #: src/modules/object-metadata/hooks/useSortSubFieldChoicesForField.ts
 #: src/modules/object-record/record-field/ui/form-types/components/FormAddressFieldInput.tsx
@@ -2055,6 +2070,8 @@ msgstr ""
 #: src/pages/settings/ai/SettingsAgentTurnDetail.tsx
 #: src/pages/settings/ai/SettingsAI.tsx
 #: src/pages/settings/ai/SettingsAI.tsx
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 #: src/pages/settings/ai/SettingsAiPrompts.tsx
 #: src/pages/settings/ai/SettingsAiUsageUserDetail.tsx
 #: src/pages/settings/ai/SettingsToolDetail.tsx
@@ -3100,6 +3117,11 @@ msgstr "Zapytaj AI"
 msgid "Ask anything, @ a record or / a skill..."
 msgstr "Zapytaj o cokolwiek, oznacz rekord znakiem @ lub umiejętność znakiem /..."
 
+#. js-lingui-id: +UeMhC
+#: src/modules/activities/emails/ai/components/EmailComposerAiToolbar.tsx
+msgid "Ask the assistant to write or change something…"
+msgstr ""
+
 #. js-lingui-id: QVL/hg
 #: src/modules/ai/components/AiChatQuestionStatusRenderer.tsx
 msgid "Asking questions..."
@@ -3166,8 +3188,15 @@ msgid "Assignment"
 msgstr "Przypisanie"
 
 #. js-lingui-id: d/bvvp
+#: src/modules/activities/emails/ai/components/EmailThreadAiPanel.tsx
+#: src/modules/page-layout/widgets/email-thread/components/EmailThreadWidget.tsx
 #: src/pages/settings/ai/SettingsAgentTurnDetail.tsx
 msgid "Assistant"
+msgstr ""
+
+#. js-lingui-id: zgFQmE
+#: src/modules/activities/emails/ai/components/EmailComposerAiSuggestion.tsx
+msgid "Assistant suggestion"
 msgstr ""
 
 #. js-lingui-id: 4H6WHS
@@ -3495,6 +3524,7 @@ msgstr "Równoważ według"
 
 #. js-lingui-id: kJygHz
 #: src/modules/ai/utils/getAiModelTierLabel.ts
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 msgid "Balanced"
 msgstr "Zrównoważony"
 
@@ -3535,6 +3565,11 @@ msgstr "UDW"
 #: src/modules/workflow/workflow-steps/workflow-actions/form-action/components/WorkflowEditActionFormBuilder.tsx
 msgid "Because this workflow is not using a manual trigger, the form will not open on top of the interface. To fill it, open the corresponding workflow run and complete the form there."
 msgstr "Ponieważ ten przepływ pracy nie używa ręcznego wyzwalacza, formularz nie otworzy się jako nakładka na interfejs. Aby go wypełnić, otwórz odpowiednie uruchomienie przepływu pracy i wypełnij go tam."
+
+#. js-lingui-id: PnX/UF
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Behaviour"
+msgstr ""
 
 #. js-lingui-id: +MqoSu
 #: src/modules/settings/admin-panel/health-status/components/SettingsAdminWorkspacesStatusSummaryCard.tsx
@@ -4312,6 +4347,11 @@ msgstr "Zmień motyw na jasny"
 msgid "Change theme to system"
 msgstr "Zmień motyw na systemowy"
 
+#. js-lingui-id: UJXHES
+#: src/modules/activities/emails/ai/components/EmailComposerAiToolbar.tsx
+msgid "Change tone"
+msgstr ""
+
 #. js-lingui-id: lfFsZ4
 #: src/modules/settings/workspace/components/SettingsWorkspaceEmailGroupSection.tsx
 msgid "Channels"
@@ -4755,6 +4795,11 @@ msgstr "Zamknij podgląd"
 msgid "Close side panel"
 msgstr "Zamknij panel boczny"
 
+#. js-lingui-id: pamhqR
+#: src/modules/activities/emails/ai/components/EmailThreadAiPanel.tsx
+msgid "Close the assistant"
+msgstr ""
+
 #. js-lingui-id: H4meUz
 #: src/modules/settings/components/SettingsCustomizeVideoModal.tsx
 msgid "Close video"
@@ -5033,6 +5078,11 @@ msgstr "Napisz e-mail"
 #: src/modules/settings/admin-panel/health-status/components/SettingsAdminWorkspacesStatusSummaryCard.tsx
 msgid "Computed at"
 msgstr "Obliczono o"
+
+#. js-lingui-id: AzFAXz
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Concise"
+msgstr ""
 
 #. js-lingui-id: PLbVix
 #: src/pages/settings/applications/tabs/SettingsApplicationCommandMenuItemSettingsTab.tsx
@@ -5391,8 +5441,14 @@ msgstr "Zawartość"
 #: src/modules/ai/components/RoutingDebugDisplay.tsx
 #: src/modules/settings/ai/components/SettingsAiModelHoverCard.tsx
 #: src/modules/workflow/workflow-steps/workflow-actions/classify-action/components/WorkflowEditActionClassify.tsx
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 msgid "Context"
 msgstr "Kontekst"
+
+#. js-lingui-id: LEIRm/
+#: src/pages/settings/ai/components/SettingsAiOverviewTab.tsx
+msgid "Context and defaults used to summarize threads and write replies"
+msgstr ""
 
 #. js-lingui-id: /vXJ9Y
 #: src/modules/ai/components/internal/AiChatContextUsageButton.tsx
@@ -6940,6 +6996,11 @@ msgstr "Domyślna wartość"
 msgid "Default View"
 msgstr "Domyślny widok"
 
+#. js-lingui-id: fycXkW
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Defaults for generated drafts. They can be changed message by message."
+msgstr ""
+
 #. js-lingui-id: 6b8WDd
 #: src/modules/settings/admin-panel/constants/SettingsAdminFeatureFlagMetadata.ts
 msgid "Deferred workspace migration actions"
@@ -7437,6 +7498,11 @@ msgstr "Odłącz"
 msgid "Detail per workspace"
 msgstr "Szczegóły dla każdego obszaru roboczego"
 
+#. js-lingui-id: tUVwfQ
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Detailed"
+msgstr ""
+
 #. js-lingui-id: URmyfc
 #: src/modules/ai/components/RoutingDebugDisplay.tsx
 #: src/modules/settings/event-logs/utils/getColumnsForEventLogTable.tsx
@@ -7503,6 +7569,12 @@ msgstr "Dyktowanie nie powiodło się. Spróbuj ponownie."
 msgid "Dictation is not supported in this browser."
 msgstr "Dyktowanie nie jest obsługiwane w tej przeglądarce."
 
+#. js-lingui-id: fYUNRJ
+#: src/modules/activities/emails/ai/components/EmailComposerAiToolbar.tsx
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Direct"
+msgstr ""
+
 #. js-lingui-id: 8n9Unw
 #: src/modules/settings/admin-panel/constants/SettingsAdminFeatureFlagMetadata.ts
 msgid "Direct REST metadata responses"
@@ -7562,6 +7634,11 @@ msgstr "Odkrywanie w {defaultDomain}"
 #: src/modules/settings/emailing-domains/components/SettingsEmailingDomainAiSetup.tsx
 msgid "Dismiss AI setup prompt"
 msgstr "Odrzuć monit konfiguracji AI"
+
+#. js-lingui-id: pMUjjS
+#: src/modules/activities/emails/ai/components/EmailComposerAiSuggestion.tsx
+msgid "Dismiss the suggestion"
+msgstr ""
 
 #. js-lingui-id: Ldgs6e
 #: src/modules/side-panel/pages/page-layout/components/record-page/SidePanelRecordPageFieldsSettings.tsx
@@ -7778,6 +7855,11 @@ msgstr "Pobierz przykładowy plik"
 msgid "Draft"
 msgstr "Szkic"
 
+#. js-lingui-id: DoQmbF
+#: src/modules/activities/emails/ai/components/EmailComposerAiToolbar.tsx
+msgid "Draft a reply"
+msgstr ""
+
 #. js-lingui-id: 1qZ7C3
 #: src/modules/ai/components/suggested-prompts/contextual-suggested-prompts.ts
 msgid "Draft an email"
@@ -7853,6 +7935,7 @@ msgstr "Czas trwania"
 
 #. js-lingui-id: KIjvtr
 #: src/localization/hooks/useLocaleOptions.ts
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 msgid "Dutch"
 msgstr "holenderski"
 
@@ -7927,6 +8010,11 @@ msgstr "np. OpenAI EU"
 #: src/pages/settings/ai/components/SettingsAiOverviewTab.tsx
 msgid "E.g., \"We are a B2B SaaS company. Always use formal language...\""
 msgstr "Np.: \"Jesteśmy firmą B2B SaaS. Zawsze używaj języka formalnego...\""
+
+#. js-lingui-id: 6l6HCS
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "E.g., \"We sell to RevOps teams. Never promise a discount above 15%.\""
+msgstr ""
 
 #. js-lingui-id: GhTFTJ
 #: src/modules/workflow/workflow-steps/workflow-actions/ai-agent-action/components/WorkflowOutputSchemaBuilder.tsx
@@ -8209,6 +8297,11 @@ msgstr "Adresy e-mail, które nie będą już otrzymywać wiadomości kampanijny
 msgid "Email and Chat"
 msgstr "E-mail i czat"
 
+#. js-lingui-id: e1mwzp
+#: src/pages/settings/ai/components/SettingsAiOverviewTab.tsx
+msgid "Email assistant"
+msgstr ""
+
 #. js-lingui-id: snb/bC
 #: src/modules/settings/admin-panel/constants/SettingsAdminFeatureFlagMetadata.ts
 msgid "Email campaigns"
@@ -8322,6 +8415,9 @@ msgstr "e-maile"
 #: src/modules/settings/hooks/useSettingsNavigationItems.tsx
 #: src/pages/settings/accounts/SettingsAccountsEmails.tsx
 #: src/pages/settings/accounts/SettingsAccountsEmails.tsx
+#: src/pages/settings/ai/components/SettingsAiOverviewTab.tsx
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 #: src/pages/settings/communications/SettingsWorkspaceCommunications.tsx
 msgid "Emails"
 msgstr "Emaile"
@@ -8511,6 +8607,7 @@ msgstr "Inżynier"
 
 #. js-lingui-id: lYGfRP
 #: src/localization/hooks/useLocaleOptions.ts
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 msgid "English"
 msgstr "Angielski"
 
@@ -9672,6 +9769,11 @@ msgstr "Nie udało się zapisać ustawień aplikacji."
 msgid "Failed to save the campaign"
 msgstr "Nie udało się zapisać kampanii"
 
+#. js-lingui-id: 6h7nt7
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Failed to save the email assistant settings"
+msgstr ""
+
 #. js-lingui-id: 9ryUyP
 #: src/pages/settings/ai/components/SettingsAiOverviewTab.tsx
 msgid "Failed to save workspace instructions"
@@ -10223,6 +10325,11 @@ msgstr "Imię nie może być puste"
 msgid "Fit view"
 msgstr "Dopasuj widok"
 
+#. js-lingui-id: mri+GH
+#: src/modules/activities/emails/ai/components/EmailComposerAiToolbar.tsx
+msgid "Fix grammar"
+msgstr ""
+
 #. js-lingui-id: tVgANq
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
 msgid "Fix the payment issue to keep your premium features active."
@@ -10388,8 +10495,15 @@ msgstr "darmowe kredyty na użytkownika"
 
 #. js-lingui-id: nLC6tu
 #: src/localization/hooks/useLocaleOptions.ts
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 msgid "French"
 msgstr "Francuski"
+
+#. js-lingui-id: Gq7H1m
+#: src/modules/activities/emails/ai/components/EmailComposerAiToolbar.tsx
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Friendly"
+msgstr ""
 
 #. js-lingui-id: ejVYRQ
 #: src/modules/activities/emails/components/CampaignDetailsFields.tsx
@@ -10595,6 +10709,12 @@ msgstr "Wygeneruj DPA"
 msgid "Generate Function Output"
 msgstr "Wygeneruj wynik funkcji"
 
+#. js-lingui-id: +kgXtD
+#. placeholder {0}: beautifyPastDateRelativeToNow( summary.generatedAt, localeCatalog, )
+#: src/modules/activities/emails/ai/components/EmailThreadAiPanel.tsx
+msgid "Generated {0}"
+msgstr ""
+
 #. js-lingui-id: wu9eMO
 #: src/modules/ai/components/CodeExecutionDisplay.tsx
 msgid "Generated Files"
@@ -10607,6 +10727,7 @@ msgstr "Generuje link Google Meet lub Microsoft Teams w zależności od konta."
 
 #. js-lingui-id: DDcvSo
 #: src/localization/hooks/useLocaleOptions.ts
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 msgid "German"
 msgstr "Niemiecki"
 
@@ -10647,6 +10768,11 @@ msgstr "Wykorzystaj w pełni swój CRM, instalując kilka aplikacji"
 #: src/pages/onboarding/InviteTeam.tsx
 msgid "Get the most out of your workspace by inviting your team."
 msgstr "Wykorzystaj w pełni swoje miejsce pracy, zapraszając swój zespół."
+
+#. js-lingui-id: 3EDScE
+#: src/modules/activities/emails/ai/components/EmailThreadAiPanel.tsx
+msgid "Get the thread in a few lines, with what is expected from you."
+msgstr ""
 
 #. js-lingui-id: XXtAx5
 #: src/modules/settings/data-model/indexes/forms/components/SettingsObjectIndexOptionsForm.tsx
@@ -11161,6 +11287,11 @@ msgstr "Godziny pomiędzy wyzwalaczami"
 msgid "How credits work"
 msgstr "Jak działają kredyty"
 
+#. js-lingui-id: b2DfyV
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "How long a generated reply should be."
+msgstr ""
+
 #. js-lingui-id: nHmYga
 #: src/modules/settings/billing/components/SettingsBillingLimitForm.tsx
 msgid "How much can be spent, and how often it resets."
@@ -11170,6 +11301,11 @@ msgstr "Ile można wydać oraz jak często limit się odnawia."
 #: src/pages/settings/applications/tabs/SettingsApplicationDetailContentTab.tsx
 msgid "How records, pages, and navigation are displayed"
 msgstr "Sposób wyświetlania rekordów, stron i nawigacji"
+
+#. js-lingui-id: VkJ2Q6
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "How the assistant addresses your contacts."
+msgstr ""
 
 #. js-lingui-id: e60vNl
 #: src/pages/onboarding/CreateProfile.tsx
@@ -11686,6 +11822,11 @@ msgstr "Wprowadź dane JSON, a następnie naciśnij \"Uruchom funkcję\"."
 msgid "Insert action"
 msgstr "Wstaw akcję"
 
+#. js-lingui-id: UF6vwM
+#: src/modules/activities/emails/ai/components/EmailComposerAiSuggestion.tsx
+msgid "Insert below"
+msgstr ""
+
 #. js-lingui-id: mia08l
 #: src/modules/advanced-text-editor/components/AdvancedTextEditorInsertRail.tsx
 msgid "Insert image"
@@ -12130,6 +12271,7 @@ msgstr "Domyślnie zawiera 7 standardowych obiektów."
 
 #. js-lingui-id: Lj7sBL
 #: src/localization/hooks/useLocaleOptions.ts
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 msgid "Italian"
 msgstr "Włoski"
 
@@ -12288,6 +12430,11 @@ msgstr "Skopiowano ID klucza"
 msgid "Key in use on another server"
 msgstr "Klucz w użyciu na innym serwerze"
 
+#. js-lingui-id: t5iyU3
+#: src/modules/activities/emails/ai/components/EmailThreadAiSummaryContent.tsx
+msgid "Key points"
+msgstr ""
+
 #. js-lingui-id: VOAmkS
 #: src/modules/workflow/workflow-steps/workflow-actions/http-request-action/components/BodyInput.tsx
 msgid "Key/Value"
@@ -12344,6 +12491,7 @@ msgid "Label must contain at least one alphanumeric character"
 msgstr "Etykieta musi zawierać co najmniej jeden znak alfanumeryczny"
 
 #. js-lingui-id: vXIe7J
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 #: src/pages/settings/profile/appearance/components/LocalePicker.tsx
 msgid "Language"
 msgstr "Język"
@@ -12697,6 +12845,11 @@ msgstr "Nazwa podmiotu prawnego"
 #. js-lingui-id: MP1v+1
 #: src/modules/side-panel/pages/page-layout/constants/settings/ChartConfigurationSettingLabels.ts
 msgid "Legend"
+msgstr ""
+
+#. js-lingui-id: NC2AI2
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Length"
 msgstr ""
 
 #. js-lingui-id: xu7RPQ
@@ -14418,6 +14571,11 @@ msgstr "Newslettery"
 msgid "Next"
 msgstr "Dalej"
 
+#. js-lingui-id: NFiDyM
+#: src/modules/activities/emails/ai/components/EmailThreadAiSummaryContent.tsx
+msgid "Next actions"
+msgstr ""
+
 #. js-lingui-id: L0DCk4
 #: src/modules/settings/billing/components/SettingsBillingSubscriptionInfo.tsx
 msgid "Next charge {totalRenewDate}. Invoice amount may vary if you add members or credits between periods"
@@ -15457,6 +15615,16 @@ msgstr "Nie naliczono jeszcze niczego w tym zakresie"
 #: src/modules/command-menu-item/engine-command/record/single-record/message-campaign/components/CancelMessageCampaignSingleRecordCommand.tsx
 msgid "Nothing has gone out yet. The campaign returns to your drafts and you can edit or schedule it again."
 msgstr "Nic jeszcze nie zostało wysłane. Kampania wróci do wersji roboczych, a Ty możesz ją edytować lub ponownie zaplanować."
+
+#. js-lingui-id: Q7+o9N
+#: src/modules/activities/emails/ai/components/EmailComposerAiSuggestion.tsx
+msgid "Nothing is sent"
+msgstr ""
+
+#. js-lingui-id: RwJOl4
+#: src/modules/activities/emails/ai/components/EmailComposerAiSuggestion.tsx
+msgid "Nothing to change, this draft is ready to send."
+msgstr ""
 
 #. js-lingui-id: DYCPYF
 #: src/modules/page-layout/widgets/components/StandaloneWidgetPlaceholder.tsx
@@ -16818,6 +16986,11 @@ msgstr "Mnoga"
 msgid "Polish"
 msgstr "polski"
 
+#. js-lingui-id: MOERNx
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Portuguese"
+msgstr ""
+
 #. js-lingui-id: 0nsqwk
 #: src/localization/hooks/useLocaleOptions.ts
 msgid "Portuguese — Brazil"
@@ -17047,6 +17220,12 @@ msgstr "Przetwarzanie..."
 msgid "profession"
 msgstr "profession"
 
+#. js-lingui-id: Oojfbh
+#: src/modules/activities/emails/ai/components/EmailComposerAiToolbar.tsx
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Professional"
+msgstr ""
+
 #. js-lingui-id: vERlcd
 #: src/modules/settings/hooks/useSettingsNavigationItems.tsx
 #: src/pages/settings/profile/SettingsProfile.tsx
@@ -17179,6 +17358,11 @@ msgstr ""
 msgid "Queries that relied on it will fall back to a sequential scan. You can recreate it later."
 msgstr "Zapytania, które go używały, wrócą do sekwencyjnego skanowania. Możesz odtworzyć ten indeks później."
 
+#. js-lingui-id: 0mx5ow
+#: src/modules/workflow/workflow-steps/workflow-actions/query-action/components/WorkflowEditActionQuery.tsx
+msgid "Query"
+msgstr ""
+
 #. js-lingui-id: bfgr/e
 #: src/modules/workflow/workflow-steps/workflow-actions/classify-action/components/WorkflowEditActionClassify.tsx
 msgid "Question"
@@ -17299,6 +17483,11 @@ msgstr "Definicja {entityTypeLabel} tylko do odczytu dostarczona przez tę aplik
 #: src/modules/settings/billing/constants/SettingsBillingPlanComparisonRows.ts
 msgid "Read/Edit/Delete permissions"
 msgstr "Uprawnienia odczytu/edycji/usuwania"
+
+#. js-lingui-id: jYm01o
+#: src/modules/activities/emails/ai/components/EmailThreadAiPanel.tsx
+msgid "Reading the thread…"
+msgstr ""
 
 #. js-lingui-id: VJScHU
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceCreditGrantModal.tsx
@@ -17577,6 +17766,11 @@ msgstr "URI przekierowania"
 msgid "Refresh status"
 msgstr "Odśwież status"
 
+#. js-lingui-id: 6exX+8
+#: src/modules/activities/emails/ai/components/EmailComposerAiSuggestion.tsx
+msgid "Regenerate"
+msgstr ""
+
 #. js-lingui-id: vpZcGd
 #: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeyDetail.tsx
 #: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeyDetail.tsx
@@ -17592,6 +17786,11 @@ msgstr "Wygeneruj ponownie klucz"
 #: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeyDetail.tsx
 msgid "Regenerate Key"
 msgstr "Wygeneruj ponownie klucz"
+
+#. js-lingui-id: nfsMtq
+#: src/modules/activities/emails/ai/components/EmailThreadAiPanel.tsx
+msgid "Regenerate the summary"
+msgstr ""
 
 #. js-lingui-id: uJ+Ve2
 #: src/pages/settings/admin-panel/SettingsAdminAiProviderDetail.tsx
@@ -17939,6 +18138,11 @@ msgstr "Zmień kolejność pola"
 msgid "Reorder options"
 msgstr "Zmień kolejność opcji"
 
+#. js-lingui-id: fqSfXY
+#: src/modules/activities/emails/ai/components/EmailComposerAiSuggestion.tsx
+msgid "Replace"
+msgstr ""
+
 #. js-lingui-id: q8Id6J
 #: src/modules/side-panel/pages/page-layout/components/WidgetSettingsManageSection.tsx
 msgid "Replace widget"
@@ -17960,6 +18164,7 @@ msgid "Replit install links require an HTTPS MCP URL."
 msgstr "Linki instalacyjne Replit wymagają adresu URL MCP z HTTPS."
 
 #. js-lingui-id: ImOQa9
+#: src/modules/activities/emails/components/EmailThreadMessage.tsx
 #: src/modules/page-layout/widgets/email-thread/components/EmailThreadComposer.tsx
 #: src/modules/side-panel/hooks/useOpenComposeEmailInSidePanel.ts
 msgid "Reply"
@@ -18236,6 +18441,12 @@ msgstr "Wartość zwrotna"
 msgid "reverse alphabetical"
 msgstr "odwrotnie alfabetycznie"
 
+#. js-lingui-id: 5k0NLb
+#: src/modules/activities/emails/ai/components/EmailComposerAiSuggestion.tsx
+#: src/modules/activities/emails/ai/components/EmailComposerAiToolbar.tsx
+msgid "Review"
+msgstr ""
+
 #. js-lingui-id: GXsAby
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceCreditGrantRowDropdownMenu.tsx
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceCreditGrantsTable.tsx
@@ -18499,6 +18710,11 @@ msgstr "Sprzedaż"
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceUsageLimitModal.tsx
 msgid "Same as the limit"
 msgstr "Taki sam jak limit"
+
+#. js-lingui-id: XT3BOH
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Same as the thread"
+msgstr ""
 
 #. js-lingui-id: QeF0zb
 #: src/modules/side-panel/pages/email-block-settings/components/EmailBoxSidesInput.tsx
@@ -19770,6 +19986,11 @@ msgstr "Krótki"
 msgid "Short label"
 msgstr "Krótka etykieta"
 
+#. js-lingui-id: vEVcXG
+#: src/modules/activities/emails/ai/components/EmailComposerAiToolbar.tsx
+msgid "Shorten"
+msgstr ""
+
 #. js-lingui-id: gWk8gY
 #: src/modules/settings/data-model/fields/forms/components/SettingsDataModelFieldIconLabelForm.tsx
 msgid "Should changing a field's label also change the API name?"
@@ -19784,6 +20005,11 @@ msgstr "Czy zmiana etykiety obiektu powinna także zmienić API?"
 #: src/pages/settings/ai/components/SettingsSkillFormContent.tsx
 msgid "Should changing the label also change the API name?"
 msgstr "Czy zmiana etykiety powinna również zmienić nazwę API?"
+
+#. js-lingui-id: 8vETh9
+#: src/modules/page-layout/widgets/email-thread/components/EmailThreadIntermediaryMessages.tsx
+msgid "Show"
+msgstr ""
 
 #. js-lingui-id: vbXZ3k
 #: src/pages/settings/applications/tabs/SettingsApplicationsAvailableTab.tsx
@@ -20207,6 +20433,7 @@ msgstr "Spacje i przecinek"
 
 #. js-lingui-id: 65A04M
 #: src/localization/hooks/useLocaleOptions.ts
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 msgid "Spanish"
 msgstr "Hiszpański"
 
@@ -20678,6 +20905,11 @@ msgstr "Sugerowane"
 msgid "Sum"
 msgstr "Suma"
 
+#. js-lingui-id: iE9YuK
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Summarize long threads on open"
+msgstr ""
+
 #. js-lingui-id: UjjqZc
 #: src/modules/ai/components/suggested-prompts/contextual-suggested-prompts.ts
 msgid "Summarize the records in this view and point out anything that needs attention."
@@ -20692,6 +20924,11 @@ msgstr "Podsumuj ten rekord"
 #: src/modules/ai/components/suggested-prompts/contextual-suggested-prompts.ts
 msgid "Summarize this record and its recent activity."
 msgstr "Podsumuj ten rekord i jego ostatnią aktywność."
+
+#. js-lingui-id: Rls0Kv
+#: src/modules/activities/emails/ai/components/EmailThreadAiPanel.tsx
+msgid "Summarize this thread"
+msgstr ""
 
 #. js-lingui-id: uN7gsS
 #: src/modules/ai/components/suggested-prompts/contextual-suggested-prompts.ts
@@ -21011,6 +21248,11 @@ msgstr "Test"
 msgid "Test email sent to {0}"
 msgstr "Wiadomość testowa została wysłana do {0}"
 
+#. js-lingui-id: HpSBmT
+#: src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerDatabaseEventForm.tsx
+msgid "Test Record"
+msgstr ""
+
 #. js-lingui-id: 3nWPN6
 #: src/modules/settings/logic-functions/components/tabs/SettingsLogicFunctionTestTab.tsx
 msgid "Test your function"
@@ -21062,6 +21304,11 @@ msgstr "Adres, z którego twoja przestrzeń robocza będzie wysyłać i odbiera�
 #: src/pages/settings/admin-panel/SettingsAdminNewAiProvider.tsx
 msgid "The API endpoint for your OpenAI-compatible provider"
 msgstr "Punkt końcowy API dla Twojego dostawcy zgodnego z OpenAI"
+
+#. js-lingui-id: /Xs5/W
+#: src/modules/activities/emails/ai/hooks/useEmailDraftAssistant.ts
+msgid "The assistant could not answer."
+msgstr ""
 
 #. js-lingui-id: qjNojw
 #: src/pages/settings/admin-panel/SettingsAdminNewAiProvider.tsx
@@ -21299,6 +21546,11 @@ msgstr ""
 #: src/pages/settings/communications/SettingsWorkspaceCommunicationGroupChannelDetail.tsx
 msgid "The shared email you want to use."
 msgstr "Udostępniony adres e-mail, którego chcesz używać."
+
+#. js-lingui-id: rk0LFX
+#: src/modules/activities/emails/ai/hooks/useEmailThreadSummary.ts
+msgid "The summary could not be generated."
+msgstr ""
 
 #. js-lingui-id: 9q0gnf
 #: src/modules/page-layout/widgets/call-recording/utils/getCallRecordingStatusDisplayConfiguration.ts
@@ -21749,6 +22001,11 @@ msgstr "Ta subdomena jest zarezerwowana"
 msgid "This takes {0} credits back off this workspace straight away. Revoking cannot be undone."
 msgstr "To natychmiast odbierze temu obszarowi roboczemu {0} kredytów. Tej operacji nie można cofnąć."
 
+#. js-lingui-id: rSXO90
+#: src/modules/activities/emails/ai/hooks/useEmailThreadSummary.ts
+msgid "This thread has no readable message yet."
+msgstr ""
+
 #. js-lingui-id: MMGDfe
 #: src/modules/settings/admin-panel/config-variables/components/ConfigVariableHelpText.tsx
 msgid "This value will be saved to the database."
@@ -21835,6 +22092,11 @@ msgstr "To cofnie {0} użytkownikowi {userLabel}."
 #: src/modules/ai/components/ThinkingStepsDisplay.tsx
 msgid "Thought"
 msgstr "Myśl"
+
+#. js-lingui-id: 3zYWIb
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Threads with at least three messages are summarized as soon as they open."
+msgstr ""
 
 #. js-lingui-id: pAlfed
 #: src/modules/advanced-text-editor/constants/AdvancedTextEditorBlockCatalog.ts
@@ -21943,6 +22205,11 @@ msgstr "Tytuł"
 msgid "To"
 msgstr "Do"
 
+#. js-lingui-id: EzyB2j
+#: src/modules/activities/emails/components/EmailThreadMessageReceivers.tsx
+msgid "To {displayedReceivers}"
+msgstr ""
+
 #. js-lingui-id: ecUA8p
 #: src/modules/ai/utils/groupThreadsByDate.ts
 #: src/modules/localization/utils/formatDateISOStringToRelativeDate.ts
@@ -21998,6 +22265,11 @@ msgstr "Pomidorowy"
 #: src/modules/localization/utils/formatDateISOStringToRelativeDate.ts
 msgid "Tomorrow"
 msgstr "Jutro"
+
+#. js-lingui-id: uAQyzk
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Tone"
+msgstr ""
 
 #. js-lingui-id: 1NhzqT
 #: src/modules/activities/calendar/components/CalendarEventComposerFields.tsx
@@ -22279,6 +22551,7 @@ msgid "True"
 msgstr "Prawda"
 
 #. js-lingui-id: KDw4GX
+#: src/modules/activities/emails/ai/components/EmailThreadAiPanel.tsx
 #: src/modules/object-record/record-sharing/components/RecordSharingDropdownContent.tsx
 #: src/modules/onboarding/components/upgrade-free-trial/ChooseYourPlanErrorState.tsx
 #: src/modules/settings/billing/components/SettingsBillingPlansErrorState.tsx
@@ -23525,6 +23798,7 @@ msgstr "Nie znaleziono zmiennej"
 #. js-lingui-id: gpmbqk
 #: src/modules/advanced-text-editor/components/AdvancedTextEditorInsertRail.tsx
 #: src/modules/advanced-text-editor/components/AdvancedTextEditorInsertRail.tsx
+#: src/modules/workflow/workflow-steps/workflow-actions/query-action/components/WorkflowEditActionQuery.tsx
 #: src/pages/settings/applications/SettingsApplicationDetails.tsx
 #: src/pages/settings/applications/tabs/SettingsApplicationDetailVariablesTab.tsx
 msgid "Variables"
@@ -23895,6 +24169,12 @@ msgstr "Oczekiwanie na uprawnienie"
 msgid "Walkthrough"
 msgstr "Przewodnik"
 
+#. js-lingui-id: Wtu1aS
+#: src/modules/activities/emails/ai/components/EmailComposerAiToolbar.tsx
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Warm"
+msgstr ""
+
 #. js-lingui-id: r6y+jM
 #: src/modules/ui/feedback/toast/utils/getLocalizedToastProps.ts
 msgid "Warning"
@@ -24233,6 +24513,11 @@ msgstr "Kiedy należy wybrać tę opcję?"
 msgid "When the API key will expire."
 msgstr "Data wygaśnięcia klucza API."
 
+#. js-lingui-id: JAype0
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "When the assistant steps in on its own."
+msgstr ""
+
 #. js-lingui-id: leUubq
 #: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeyDetail.tsx
 msgid "When the key will be disabled"
@@ -24260,6 +24545,11 @@ msgstr "Gdzie otwierają się rekordy tego obiektu"
 #: src/pages/settings/admin-panel/SettingsAdminNewAiModel.tsx
 msgid "Whether this model supports chain-of-thought reasoning"
 msgstr "Czy ten model obsługuje rozumowanie chain-of-thought"
+
+#. js-lingui-id: Kx4uDN
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Which language drafts are written in."
+msgstr ""
 
 #. js-lingui-id: 9y+sLE
 #: src/modules/workflow/workflow-variables/utils/getWorkflowVariableSpecialItems.ts
@@ -24425,6 +24715,7 @@ msgstr "Przepływy pracy"
 #: src/pages/settings/ai/SettingsAgentTurnDetail.tsx
 #: src/pages/settings/ai/SettingsAgentTurnDetail.tsx
 #: src/pages/settings/ai/SettingsAI.tsx
+#: src/pages/settings/ai/SettingsAiEmail.tsx
 #: src/pages/settings/ai/SettingsAiPrompts.tsx
 #: src/pages/settings/ai/SettingsAiUsageUserDetail.tsx
 #: src/pages/settings/ai/SettingsToolDetail.tsx
@@ -24608,6 +24899,16 @@ msgstr "Napisz opis dla tego agenta"
 #: src/modules/settings/logic-functions/components/tabs/SettingsLogicFunctionCodeEditorTab.tsx
 msgid "Write your function (in typescript) below"
 msgstr "Napisz swoją funkcję (w TypeScript) poniżej"
+
+#. js-lingui-id: dwZANA
+#: src/pages/settings/ai/SettingsAiEmail.tsx
+msgid "Writing style"
+msgstr ""
+
+#. js-lingui-id: aFPrvZ
+#: src/modules/activities/emails/ai/components/EmailComposerAiToolbar.tsx
+msgid "Writing…"
+msgstr ""
 
 #. js-lingui-id: SHqkdn
 #: src/modules/side-panel/pages/page-layout/constants/ChartSettingsHeadings.ts
