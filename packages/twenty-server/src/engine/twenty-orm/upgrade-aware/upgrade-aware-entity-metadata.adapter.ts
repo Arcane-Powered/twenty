@@ -107,6 +107,21 @@ export class UpgradeAwareEntityMetadataAdapter implements OnModuleInit {
     this.applyCursorToMetadata();
   }
 
+  // Only the upgrade runner moves the cursor, so a worker booted before an
+  // upgrade would otherwise keep hiding the columns it introduced and write
+  // those truncated rows into caches that every process reads.
+  async refreshBeforeSharedCacheWrite(): Promise<void> {
+    try {
+      await this.refresh();
+    } catch (error) {
+      this.logger.warn(
+        `[upgrade-metadata] refresh before cache recompute skipped: ${
+          error instanceof Error ? error.message : String(error)
+        }`,
+      );
+    }
+  }
+
   isEntityAvailable(entityClass: Function): boolean {
     return this.availabilityByEntityClass.get(entityClass) ?? true;
   }

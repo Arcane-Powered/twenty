@@ -19,6 +19,10 @@ export class UpgradeAwareRepositoryState {
     this.metadataService = service;
   }
 
+  async refreshBeforeSharedCacheWrite(): Promise<void> {
+    await this.metadataService?.refreshBeforeSharedCacheWrite();
+  }
+
   isEntityAvailable(entityClass: Function): boolean {
     if (!isDefined(this.metadataService)) {
       return true;
