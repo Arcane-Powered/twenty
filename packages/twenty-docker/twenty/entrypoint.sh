@@ -20,16 +20,16 @@ setup_and_migrate_db() {
         echo "Warning: Failed to flush cache before upgrade, but continuing startup..."
     fi
 
-    # The upgrade cursor resumes from the last applied step, so an instance
-    # command added to a version whose workspace commands already ran is never
-    # reached. Applying pending instance commands first keeps the core schema
-    # in sync with the entities regardless of merge order.
-    if ! yarn database:migrate:prod; then
-        echo "Warning: Failed to apply pending instance commands, but continuing startup..."
-    fi
-
     if ! yarn command:prod upgrade; then
         echo "Warning: Upgrade completed with errors. Some workspaces may not be fully migrated. Check logs for details."
+    fi
+
+    # The upgrade cursor resumes from the last applied step, so an instance
+    # command added to a version whose workspace commands already ran is never
+    # reached. This runs after the upgrade because it refuses to start until
+    # every workspace has finished the previous version.
+    if ! yarn database:migrate:prod; then
+        echo "Warning: Failed to apply pending instance commands, but continuing startup..."
     fi
 
     if ! yarn command:prod cache:flush; then

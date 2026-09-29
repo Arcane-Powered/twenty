@@ -154,4 +154,85 @@ describe('UpgradeAwareEntityMetadataAdapter', () => {
 
     expect(metadata.columns).toEqual([visibleColumn]);
   });
+
+  describe('refreshBeforeSharedCacheWrite', () => {
+    const buildAdapter = async (getLastAttemptedInstanceCommand: jest.Mock) => {
+      const introducedColumn = buildColumn('introducedColumn');
+      const visibleColumn = buildColumn('visibleColumn');
+
+      const metadata = {
+        target: EntityWithHideableColumns,
+        tableName: 'entityWithHideableColumns',
+        tablePath: 'core.entityWithHideableColumns',
+        givenTableName: 'entityWithHideableColumns',
+        schema: 'core',
+        columns: [introducedColumn, visibleColumn],
+      } as unknown as EntityMetadata;
+
+      const moduleRef = await Test.createTestingModule({
+        providers: [
+          UpgradeAwareEntityMetadataAdapter,
+          {
+            provide: UpgradeMigrationService,
+            useValue: { getLastAttemptedInstanceCommand },
+          },
+          {
+            provide: UpgradeSequenceReaderService,
+            useValue: {
+              getUpgradeSequence: jest
+                .fn()
+                .mockReturnValue([
+                  { name: REMOVE_STEP },
+                  { name: INTRODUCE_STEP },
+                ]),
+            },
+          },
+          {
+            provide: getDataSourceToken(),
+            useValue: { entityMetadatas: [metadata] } as unknown as DataSource,
+          },
+        ],
+      }).compile();
+
+      const adapter = moduleRef.get(UpgradeAwareEntityMetadataAdapter);
+
+      await adapter.onModuleInit();
+
+      return { adapter, metadata, introducedColumn, visibleColumn };
+    };
+
+    it('exposes a column introduced by an upgrade that completed after boot', async () => {
+      const getLastAttemptedInstanceCommand = jest
+        .fn()
+        .mockResolvedValueOnce({ name: 'unknown-step', status: 'completed' })
+        .mockResolvedValue({ name: INTRODUCE_STEP, status: 'completed' });
+
+      const { adapter, metadata, introducedColumn, visibleColumn } =
+        await buildAdapter(getLastAttemptedInstanceCommand);
+
+      expect(introducedColumn.isSelect).toBe(false);
+
+      await adapter.refreshBeforeSharedCacheWrite();
+
+      expect(introducedColumn.isSelect).toBe(true);
+      expect(metadata.columns).toEqual([introducedColumn, visibleColumn]);
+    });
+
+    it('keeps the current cursor when the upgrade table cannot be read', async () => {
+      const getLastAttemptedInstanceCommand = jest
+        .fn()
+        .mockResolvedValueOnce({ name: INTRODUCE_STEP, status: 'completed' })
+        .mockRejectedValue(new Error('connection lost'));
+
+      const { adapter, introducedColumn } = await buildAdapter(
+        getLastAttemptedInstanceCommand,
+      );
+
+      await expect(
+        adapter.refreshBeforeSharedCacheWrite(),
+      ).resolves.toBeUndefined();
+
+      expect(introducedColumn.isSelect).toBe(true);
+    });
+  });
 });

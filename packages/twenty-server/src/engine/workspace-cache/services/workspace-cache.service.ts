@@ -21,6 +21,7 @@ import { CacheStorageService } from 'src/engine/core-modules/cache-storage/servi
 import { CacheStorageNamespace } from 'src/engine/core-modules/cache-storage/types/cache-storage-namespace.enum';
 import { TwentyConfigService } from 'src/engine/core-modules/twenty-config/twenty-config.service';
 import { PromiseMemoizer } from 'src/engine/twenty-orm/storage/promise-memoizer.storage';
+import { UpgradeAwareRepositoryState } from 'src/engine/twenty-orm/upgrade-aware/upgrade-aware-repository-state';
 import {
   WORKSPACE_CACHE_KEY,
   WORKSPACE_CACHE_OPTIONS,
@@ -532,6 +533,8 @@ export class WorkspaceCacheService implements OnModuleInit, OnModuleDestroy {
     if (cacheKeyNames.length === 0) {
       return result;
     }
+
+    await UpgradeAwareRepositoryState.getInstance().refreshBeforeSharedCacheWrite();
 
     const rowsBatchLoader = new WorkspaceCacheRowsBatchLoader(
       this.coreDataSource,
