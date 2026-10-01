@@ -5,6 +5,10 @@ import { isNonEmptyString } from '@sniptt/guards';
 import { MessageParticipantRole } from 'twenty-shared/types';
 import { isDefined, isFieldValueRestricted } from 'twenty-shared/utils';
 
+// Threads can hold messages whose FROM participant was never synced; the
+// assistant still reads them rather than dropping their text.
+const UNKNOWN_SENDER_DISPLAY_NAME = 'Unknown sender';
+
 export const buildEmailAssistantMessageInputs = (
   messages: EmailThreadMessageWithSender[],
 ): EmailAssistantMessageInput[] =>
@@ -23,17 +27,21 @@ export const buildEmailAssistantMessageInputs = (
         .map((participant) => getDisplayNameFromParticipant({ participant }))
         .join(', ');
 
+      const { sender } = message;
+
       return {
-        senderDisplayName: getDisplayNameFromParticipant({
-          participant: message.sender,
-          shouldUseFullName: true,
-        }),
-        senderHandle: isNonEmptyString(message.sender.handle)
-          ? message.sender.handle
+        senderDisplayName: isDefined(sender)
+          ? getDisplayNameFromParticipant({
+              participant: sender,
+              shouldUseFullName: true,
+            })
+          : UNKNOWN_SENDER_DISPLAY_NAME,
+        senderHandle: isNonEmptyString(sender?.handle)
+          ? sender.handle
           : undefined,
         receivers: isNonEmptyString(receivers) ? receivers : undefined,
         sentAt: message.receivedAt ?? undefined,
         text: message.text,
-        isFromWorkspaceMember: isDefined(message.sender.workspaceMember),
+        isFromWorkspaceMember: isDefined(sender?.workspaceMember),
       };
     });

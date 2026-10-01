@@ -81,4 +81,19 @@ describe('buildEmailAssistantMessageInputs', () => {
       ]),
     ).toEqual([]);
   });
+
+  it('keeps a message whose sender was never synced', () => {
+    const [input] = buildEmailAssistantMessageInputs([
+      buildMessage({ sender: undefined }),
+    ]);
+
+    expect(input).toEqual({
+      senderDisplayName: 'Unknown sender',
+      senderHandle: undefined,
+      receivers: 'Claire Lefèvre',
+      sentAt: '2026-09-11T17:42:00.000Z',
+      text: 'Can you confirm the pricing tier?',
+      isFromWorkspaceMember: false,
+    });
+  });
 });
