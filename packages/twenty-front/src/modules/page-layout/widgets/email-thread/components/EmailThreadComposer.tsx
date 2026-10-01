@@ -21,6 +21,7 @@ import {
   IconSend,
   IconX,
 } from 'twenty-ui/icon';
+import { Button } from 'twenty-ui/primitives/input';
 import { themeCssVariables } from 'twenty-ui/theme';
 import { getOsControlSymbol } from 'twenty-ui/utilities';
 
@@ -38,6 +39,18 @@ const StyledReplyBar = styled.button`
     background: ${themeCssVariables.background.transparent.light};
     color: ${themeCssVariables.font.color.secondary};
   }
+`;
+
+// The side panel renders these actions in its footer; the record page has no
+// footer, so the composer carries its own.
+const StyledComposerActions = styled.div`
+  align-items: center;
+  border-top: 1px solid ${themeCssVariables.border.color.light};
+  display: flex;
+  flex-shrink: 0;
+  gap: ${themeCssVariables.spacing[2]};
+  justify-content: flex-end;
+  padding: ${themeCssVariables.spacing[2]} ${themeCssVariables.spacing[3]};
 `;
 
 type EmailThreadComposerProps = {
@@ -160,12 +173,36 @@ export const EmailThreadComposer = ({
         />
       )}
       {isComposerOpen ? (
-        <EmailComposerFields
-          composerState={composerState}
-          onAttachFiles={isInSidePanel ? undefined : openAttachmentPicker}
-          messageThreadId={messageThreadId}
-          threadMessages={threadMessages}
-        />
+        <>
+          <EmailComposerFields
+            composerState={composerState}
+            onAttachFiles={isInSidePanel ? undefined : openAttachmentPicker}
+            messageThreadId={messageThreadId}
+            threadMessages={threadMessages}
+          />
+          {!isInSidePanel && (
+            <StyledComposerActions>
+              <Button
+                size="sm"
+                variant="outline"
+                startIcon={<IconX />}
+                onClick={() => setIsComposerOpen(false)}
+              >
+                {t`Cancel reply`}
+              </Button>
+              <Button
+                size="sm"
+                variant="solid"
+                color="accent"
+                startIcon={<IconSend />}
+                onClick={handleSend}
+                disabled={!canSendReply}
+              >
+                {t`Send`}
+              </Button>
+            </StyledComposerActions>
+          )}
+        </>
       ) : (
         !isInSidePanel && (
           <StyledReplyBar onClick={() => setIsComposerOpen(true)}>

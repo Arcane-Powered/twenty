@@ -69,6 +69,7 @@ const StyledBody = styled.div`
   flex: 1;
   flex-direction: column;
   min-height: 0;
+  overflow-y: auto;
   padding: ${themeCssVariables.spacing[2]} ${themeCssVariables.spacing[3]};
 `;
 
